@@ -7,8 +7,8 @@ export type Role = 'tester' | 'reviewer' | 'admin';
 export type CaseStatus = 'RASCUNHO' | 'RECEBIDO' | 'EM_ANALISE' | 'AGUARDANDO_REVISAO' | 'FALHA_ANALISE' | 'PENDENTE_INFORMACOES' | 'ACEITO_PARA_ATENDIMENTO' | 'ENCERRADO';
 export type Decision = 'PENDENTE_INFORMACOES' | 'ACEITO_PARA_ATENDIMENTO' | 'ENCERRADO';
 export const STATUS_LABELS: Record<CaseStatus,string> = {
-  RASCUNHO:'Rascunho', RECEBIDO:'Recebido', EM_ANALISE:'Em análise',
-  AGUARDANDO_REVISAO:'Aguardando revisão', FALHA_ANALISE:'Análise pendente',
+  RASCUNHO:'Rascunho', RECEBIDO:'Recebido', EM_ANALISE:'Organizando ficha',
+  AGUARDANDO_REVISAO:'Aguardando revisão', FALHA_ANALISE:'Ficha pendente',
   PENDENTE_INFORMACOES:'Pedir informações', ACEITO_PARA_ATENDIMENTO:'Aceito para atendimento', ENCERRADO:'Encerrado',
 };
 export interface Evidence { message_id: string; trecho: string }

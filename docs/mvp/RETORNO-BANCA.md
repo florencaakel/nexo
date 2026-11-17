@@ -49,7 +49,7 @@ O registro auxiliar gerado não ocupa os trechos da ficha: permanece no original
 - Home e detalhe observados em 1440 e 390 px; nenhum extravasamento lateral observado a 390. Menu móvel e etapas manuais funcionaram. Não é auditoria completa de desempenho/acessibilidade.
 - Falhas da captura longa do navegador geraram imagens repetidas/incompletas; não são usadas como evidência. Capturas de viewport abaixo foram inspecionadas.
 
-Capturas locais: [home desktop](evidencias/banca-home-desktop.png), [home mobile](evidencias/banca-home-mobile.png), [como funciona](evidencias/banca-como-funciona.png).
+Capturas locais: [home desktop](evidencias/banca-home-desktop.png), [home mobile](evidencias/banca-home-mobile.png), [como funciona](evidencias/banca-como-funciona.png), [FAQ](evidencias/banca-faq.png).
 
 ## Para a apresentação
 
@@ -59,6 +59,6 @@ A economia de tempo/custo é uma hipótese a validar, não um resultado medido. 
 
 ## Candidato para publicação, se autorizado
 
-Pasta limpa: `outputs/nexo-vercel-6oGVPJ`, 28 arquivos, fonte `98abab0ec3b085cf1c209eb2f73a13cf97a59909`. Preparada por `npm run package:vercel`, selecionando manifesto e assets públicos versionados, sem abrir arquivos de ambiente. Não publicar `dist/browser` bruto. Destino proposto: projeto Vercel existente `aps-nexo`, time de hospedagem (identificador pessoal omitido), sem serviço adicional.
+Pasta limpa: `outputs/nexo-vercel-6oGVPJ`, 28 arquivos (1.501.273 bytes), fonte `98abab0ec3b085cf1c209eb2f73a13cf97a59909`. Preparada por `npm run package:vercel`, selecionando manifesto e assets públicos versionados, sem abrir arquivos de ambiente. Não publicar `dist/browser` bruto. Destino proposto: projeto Vercel existente `aps-nexo`, time de hospedagem (identificador pessoal omitido), sem serviço adicional.
 
 Antes de publicar, receber aprovação específica da Florença sobre esta atualização e a opção de ditado. Nenhum push, PR, merge ou deploy foi executado nesta rodada. A versão anteriormente publicada permanece disponível para reversão por novo deploy autorizado.

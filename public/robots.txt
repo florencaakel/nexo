@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nexo-triagem-juridica.insper-1495.chatgpt.site/sitemap.xml

@@ -1,0 +1,61 @@
+{
+  "url": "[endereço histórico do Sites omitido]",
+  "date": "2026-10-05T22:47:10.123Z",
+  "widths": [
+    {
+      "width": 360,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 768,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1024,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1287,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1440,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    }
+  ],
+  "errors": [],
+  "motion": {
+    "status": "PASS",
+    "observedPhases": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "repeats": true,
+    "keyboardPauseResume": true,
+    "offscreenPauseResume": true,
+    "backgroundPauseResume": "Not emulated by headless Chrome",
+    "reducedAtLoadAndRuntime": true
+  },
+  "mobileTouch": "PASS",
+  "fallback": "PASS: complete illustration without JS",
+  "status": "PASS"
+}

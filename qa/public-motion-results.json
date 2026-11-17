@@ -1,0 +1,67 @@
+{
+  "url": "[endereço histórico do Sites omitido]",
+  "date": "2026-10-05T21:25:53.406Z",
+  "widths": [
+    {
+      "width": 390,
+      "opening": {
+        "opacity": "0",
+        "animations": 2
+      },
+      "animatedSections": [
+        "inicio",
+        "header",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo",
+        "rodape"
+      ],
+      "reducedAtLoad": "PASS",
+      "reducedWhileAnimating": "PASS",
+      "rapidTabs": "PASS",
+      "indicatorAlignment": {
+        "left": 0.328125,
+        "width": 0.328125
+      },
+      "responsiveMenu": "PASS",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "opening": {
+        "opacity": "0",
+        "animations": 2
+      },
+      "animatedSections": [
+        "inicio",
+        "header",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo",
+        "rodape"
+      ],
+      "reducedAtLoad": "PASS",
+      "reducedWhileAnimating": "PASS",
+      "rapidTabs": "PASS",
+      "indicatorAlignment": {
+        "left": 0.109375,
+        "width": 0.0625
+      },
+      "responsiveMenu": "PASS",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "withoutJavaScript": "Editorial content visible",
+  "status": "PASS"
+}

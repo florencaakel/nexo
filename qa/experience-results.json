@@ -1,0 +1,25 @@
+{
+  "url": "http://localhost:4173/",
+  "widths": [
+    {
+      "width": 390,
+      "cases": "PASS",
+      "processTabs": "PASS",
+      "keyboard": "PASS",
+      "text200": "PASS",
+      "axe": [],
+      "animation": "PASS"
+    },
+    {
+      "width": 1287,
+      "cases": "PASS",
+      "processTabs": "PASS",
+      "keyboard": "PASS",
+      "text200": "PASS",
+      "axe": [],
+      "animation": "PASS"
+    }
+  ],
+  "errors": [],
+  "status": "PASS"
+}

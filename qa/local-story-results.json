@@ -1,0 +1,88 @@
+{
+  "url": "http://localhost:4173/",
+  "date": "2026-10-06T17:29:00.171Z",
+  "widths": [
+    {
+      "width": 360,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 390,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 768,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1024,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1287,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    },
+    {
+      "width": 1440,
+      "text200": "PASS",
+      "overflow": false,
+      "axeViolations": 0
+    }
+  ],
+  "errors": [],
+  "motion": {
+    "status": "PASS",
+    "observedPhases": [
+      "0",
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "repeats": true,
+    "keyboardPauseResume": true,
+    "offscreenPauseResume": true,
+    "backgroundPauseResume": "Not emulated by headless Chrome",
+    "reducedAtLoadAndRuntime": true
+  },
+  "movingLayout": [
+    {
+      "width": 360,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "overflow": false
+    },
+    {
+      "width": 1287,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "overflow": false
+    }
+  ],
+  "mobileTouch": "PASS",
+  "fallback": "PASS: complete illustration without JS",
+  "embeddedCompatibility": "PASS: animation advances with native clock and viewport observer frozen",
+  "status": "PASS"
+}

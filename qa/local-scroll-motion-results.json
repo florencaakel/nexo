@@ -1,0 +1,72 @@
+{
+  "url": "http://localhost:4173/",
+  "date": "2026-10-06T18:12:43.827Z",
+  "widths": [
+    {
+      "width": 390,
+      "opening": {
+        "opacity": "1",
+        "animations": 0
+      },
+      "preparedBeforeEntry": "PASS",
+      "noOpacityReset": "PASS",
+      "noReplay": "PASS",
+      "animatedSections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo",
+        "rodape"
+      ],
+      "reducedAtLoad": "PASS",
+      "reducedWhileAnimating": "PASS",
+      "rapidTabs": "PASS",
+      "indicatorAlignment": {
+        "left": 0.328125,
+        "width": 0.328125
+      },
+      "responsiveMenu": "PASS",
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "opening": {
+        "opacity": "1",
+        "animations": 0
+      },
+      "preparedBeforeEntry": "PASS",
+      "noOpacityReset": "PASS",
+      "noReplay": "PASS",
+      "animatedSections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo",
+        "rodape"
+      ],
+      "reducedAtLoad": "PASS",
+      "reducedWhileAnimating": "PASS",
+      "rapidTabs": "PASS",
+      "indicatorAlignment": {
+        "left": 0.109375,
+        "width": 0.0625
+      },
+      "responsiveMenu": "PASS",
+      "overflow": false
+    }
+  ],
+  "errors": [],
+  "withoutJavaScript": "Editorial content visible",
+  "embeddedClock": "PASS: reveals and tabs complete with native animation clock frozen",
+  "status": "PASS"
+}

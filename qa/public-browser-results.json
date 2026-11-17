@@ -1,0 +1,251 @@
+{
+  "url": "[endereço histórico do Sites omitido]",
+  "date": "2026-10-05T21:25:53.406Z",
+  "results": [
+    {
+      "width": 360,
+      "example": "trabalho",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 360,
+      "example": "consumo",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 360,
+      "example": "moradia",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 360,
+      "keyboard": "PASS",
+      "focusOrder": [
+        "skip-link",
+        "wordmark",
+        "menu-toggle",
+        "button primary",
+        "button secondary",
+        "tab-trabalho",
+        "panel-trabalho",
+        "button primary",
+        "wordmark",
+        "Como funciona",
+        "Demonstração",
+        "Para quem",
+        "Impacto",
+        "Responsabilidade"
+      ],
+      "touch": "PASS",
+      "anchors": "PASS"
+    },
+    {
+      "width": 390,
+      "example": "trabalho",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 390,
+      "example": "consumo",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 390,
+      "example": "moradia",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 390,
+      "keyboard": "PASS",
+      "focusOrder": [
+        "skip-link",
+        "wordmark",
+        "menu-toggle",
+        "button primary",
+        "button secondary",
+        "tab-trabalho",
+        "panel-trabalho",
+        "button primary",
+        "wordmark",
+        "Como funciona",
+        "Demonstração",
+        "Para quem",
+        "Impacto",
+        "Responsabilidade"
+      ],
+      "touch": "PASS",
+      "anchors": "PASS"
+    },
+    {
+      "width": 768,
+      "example": "trabalho",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 768,
+      "example": "consumo",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 768,
+      "example": "moradia",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 768,
+      "keyboard": "PASS",
+      "focusOrder": [
+        "skip-link",
+        "wordmark",
+        "menu-toggle",
+        "button primary",
+        "button secondary",
+        "tab-trabalho",
+        "panel-trabalho",
+        "button primary",
+        "wordmark",
+        "Como funciona",
+        "Demonstração",
+        "Para quem",
+        "Impacto",
+        "Responsabilidade"
+      ],
+      "touch": "n/a",
+      "anchors": "PASS"
+    },
+    {
+      "width": 1440,
+      "example": "trabalho",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 1440,
+      "example": "consumo",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 1440,
+      "example": "moradia",
+      "axe": {
+        "violations": [],
+        "passes": 29
+      },
+      "overflow": {
+        "document": false,
+        "clipped": []
+      }
+    },
+    {
+      "width": 1440,
+      "keyboard": "PASS",
+      "focusOrder": [
+        "skip-link",
+        "wordmark",
+        "Como funciona",
+        "Demonstração",
+        "Para quem",
+        "Impacto",
+        "Responsabilidade",
+        "button primary",
+        "button secondary",
+        "tab-trabalho",
+        "panel-trabalho",
+        "button primary",
+        "wordmark",
+        "Como funciona",
+        "Demonstração",
+        "Para quem",
+        "Impacto",
+        "Responsabilidade"
+      ],
+      "touch": "n/a",
+      "anchors": "PASS"
+    }
+  ],
+  "console": [],
+  "failedRequests": [],
+  "text200": "PASS",
+  "reducedMotion": {
+    "preference": true,
+    "scroll": "auto",
+    "transition": "0s"
+  },
+  "status": "PASS"
+}

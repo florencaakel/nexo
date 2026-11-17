@@ -1,0 +1,756 @@
+{
+  "date": "2026-10-05T21:01:40.638965+00:00",
+  "viewports": [
+    {
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-trabalho",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "trabalho"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-consumo",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "consumo"
+    },
+    {
+      "width": 360,
+      "height": 800,
+      "scrollWidth": 360,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-moradia",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "moradia"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-trabalho",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "trabalho"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-consumo",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "consumo"
+    },
+    {
+      "width": 390,
+      "height": 844,
+      "scrollWidth": 390,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-moradia",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "moradia"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-trabalho",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "trabalho"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-consumo",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "consumo"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollWidth": 768,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-moradia",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "moradia"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-trabalho",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "trabalho"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-consumo",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "consumo"
+    },
+    {
+      "width": 1440,
+      "height": 960,
+      "scrollWidth": 1440,
+      "overflow": false,
+      "clipped": [],
+      "contrastFailures": [],
+      "brokenAnchors": [],
+      "smallTargets": [],
+      "h1Count": 1,
+      "lang": "pt-BR",
+      "title": "Nexo | Triagem jurídica inteligente",
+      "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+      "favicon": "./favicon.svg",
+      "forms": 0,
+      "visiblePanel": "panel-moradia",
+      "sections": [
+        "inicio",
+        "solucao",
+        "como-funciona",
+        "demonstracao",
+        "para-quem",
+        "diferenciais",
+        "impacto",
+        "responsabilidade",
+        "proximo-passo"
+      ],
+      "example": "moradia"
+    }
+  ],
+  "assets": [
+    {
+      "asset": "index.html",
+      "status": 200,
+      "bytes": 18044
+    },
+    {
+      "asset": "styles.css",
+      "status": 200,
+      "bytes": 9141
+    },
+    {
+      "asset": "sections.css",
+      "status": 200,
+      "bytes": 18863
+    },
+    {
+      "asset": "app.js",
+      "status": 200,
+      "bytes": 4365
+    },
+    {
+      "asset": "cases.js",
+      "status": 200,
+      "bytes": 5923
+    },
+    {
+      "asset": "favicon.svg",
+      "status": 200,
+      "bytes": 256
+    }
+  ],
+  "full_390": "qa/full-390.png",
+  "tablet_screenshot": "qa/tablet-768.png",
+  "full_1440": "qa/full-1440.png",
+  "console": [],
+  "network": [
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/styles.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/sections.css",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/app.js",
+      "status": 200
+    },
+    {
+      "url": "http://localhost:4173/cases.js",
+      "status": 200
+    }
+  ],
+  "text_200": {
+    "width": 390,
+    "height": 844,
+    "scrollWidth": 390,
+    "overflow": false,
+    "clipped": [],
+    "contrastFailures": [],
+    "brokenAnchors": [],
+    "smallTargets": [],
+    "h1Count": 1,
+    "lang": "pt-BR",
+    "title": "Nexo | Triagem jurídica inteligente",
+    "description": "A Nexo organiza relatos e produz pré-análises jurídicas com inteligência artificial para escritórios e organizações de acesso à justiça, com revisão humana.",
+    "favicon": "./favicon.svg",
+    "forms": 0,
+    "visiblePanel": "panel-trabalho",
+    "sections": [
+      "inicio",
+      "solucao",
+      "como-funciona",
+      "demonstracao",
+      "para-quem",
+      "diferenciais",
+      "impacto",
+      "responsabilidade",
+      "proximo-passo"
+    ]
+  },
+  "text_200_screenshot": "qa/text-200-mobile.png"
+}

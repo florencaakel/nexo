@@ -1,0 +1,57 @@
+/* JavaScript prepares only offscreen elements. Without it, everything stays visible. */
+@media (prefers-reduced-motion: no-preference) {
+  .motion-ready [data-reveal-state="pending"] {
+    opacity: 0;
+    transform: var(--reveal-from);
+  }
+}
+.demo-tabs {
+  position: relative;
+}
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  height: 3px;
+  background: var(--accent);
+  transform-origin: left center;
+  pointer-events: none;
+}
+.motion-ready .demo-tabs button[aria-selected=true] {
+  border-bottom-color: transparent;
+}
+.button {
+  transition: background .2s;
+}
+.button:hover {
+  transform: none;
+}
+nav a {
+  position: relative;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 6px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s;
+}
+nav a:hover::after, nav a:focus-visible::after {
+  transform: scaleX(1);
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .motion-ready .button:hover {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  nav a::after {
+    transition: none;
+  }
+}

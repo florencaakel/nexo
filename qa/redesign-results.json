@@ -1,0 +1,59 @@
+{
+  "widths": [
+    {
+      "width": 320,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 643,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 800,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 1024,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 1287,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    },
+    {
+      "width": 1440,
+      "overflow": false,
+      "fragments": "PASS",
+      "labels": "PASS"
+    }
+  ],
+  "stages": [
+    "1",
+    "2",
+    "3",
+    "0"
+  ],
+  "errors": [],
+  "playback": "PASS: loop, pause/resume, offscreen suspension",
+  "button": "PASS: cursor-origin fill, hover reset, real anchor navigation",
+  "reducedMotion": "PASS: immediate static handoff and animation cancellation",
+  "fallback": "PASS",
+  "existingInteractions": "PASS: mobile menu, Escape, keyboard case tabs",
+  "status": "PASS"
+}

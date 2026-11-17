@@ -1,0 +1,18 @@
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "como-funciona", "height": 799, "clipped": []}, "screenshot": "qa/como-funciona-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "como-funciona", "height": 1160, "clipped": []}, "screenshot": "qa/como-funciona-mobile.png", "tail": "qa/como-funciona-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "demonstracao", "height": 1625, "clipped": []}, "screenshot": "qa/demonstracao-desktop.png", "tail": "qa/demonstracao-desktop-end.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "demonstracao", "height": 3217, "clipped": []}, "screenshot": "qa/demonstracao-mobile.png", "tail": "qa/demonstracao-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "para-quem", "height": 808, "clipped": []}, "screenshot": "qa/para-quem-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "para-quem", "height": 1346, "clipped": []}, "screenshot": "qa/para-quem-mobile.png", "tail": "qa/para-quem-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "diferenciais", "height": 1027, "clipped": []}, "screenshot": "qa/diferenciais-desktop.png", "tail": "qa/diferenciais-desktop-end.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "diferenciais", "height": 1603, "clipped": ["TH."]}, "screenshot": "qa/diferenciais-mobile.png", "tail": "qa/diferenciais-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "impacto", "height": 685, "clipped": []}, "screenshot": "qa/impacto-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "impacto", "height": 1071, "clipped": []}, "screenshot": "qa/impacto-mobile.png", "tail": "qa/impacto-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "responsabilidade", "height": 1124, "clipped": []}, "screenshot": "qa/responsabilidade-desktop.png", "tail": "qa/responsabilidade-desktop-end.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "responsabilidade", "height": 1610, "clipped": []}, "screenshot": "qa/responsabilidade-mobile.png", "tail": "qa/responsabilidade-mobile-end.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "proximo-passo", "height": 601, "clipped": []}, "screenshot": "qa/proximo-passo-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "proximo-passo", "height": 546, "clipped": []}, "screenshot": "qa/proximo-passo-mobile.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "proximo-passo", "height": 601, "clipped": []}, "screenshot": "qa/proximo-passo-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "proximo-passo", "height": 546, "clipped": []}, "screenshot": "qa/proximo-passo-mobile.png"}
+{"viewport": 1440, "metrics": {"width": 1440, "overflow": false, "section": "rodape", "height": 197, "clipped": []}, "screenshot": "qa/rodape-desktop.png"}
+{"viewport": 390, "metrics": {"width": 390, "overflow": false, "section": "rodape", "height": 398, "clipped": []}, "screenshot": "qa/rodape-mobile.png"}

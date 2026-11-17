@@ -20,7 +20,7 @@ Efeito: nomes de personagens, organização e relatos podem ser sintéticos e de
 | ID | Estado | Escopo | Próxima condição |
 | --- | --- | --- | --- |
 | A1 | APROVADA | Escopo e arquitetura de PLAN.md; demo de consumidor; própria usuária como administradora/revisora/testadora por identidade verificada | Recebida: “Sim, eu aprovo, pode começar, seguindo o prompt.” |
-| A2 | NÃO SOLICITADA | Provedor/modelo, dados enviados, custos/limites e configuração protegida | Adaptador, contratos e testes locais preparados; proposta concreta de custos |
+| A2 | PROPOSTA PREPARADA; AGUARDA RESPOSTA | Provedor/modelo, dados enviados, custos/limites e configuração protegida | Adaptador, contratos e testes locais preparados; proposta concreta de custos |
 | A3 | NÃO SOLICITADA | Publicação do candidato testado no Site existente | Integração, QA, limitações, público e recuperação apresentados |
 | A4 | FORA DO ESCOPO ATUAL | Operação com relatos reais | Somente novo pedido expresso; coleta real permanece desabilitada |
 
@@ -37,3 +37,7 @@ Para registrar uma aprovação futura, acrescentar a instrução real, seu escop
 ## Registro A1
 
 A usuária respondeu à proposta A1: “Sim, eu aprovo, pode começar, seguindo o prompt.” Escopo: demonstração fictícia de consumidor, arquitetura Worker/D1, login nativo, painel e desenvolvimento com subagentes. Mantidos gates A2 para custos/IA e A3 para publicação; nenhum piloto real.
+
+## Continuidade em 17/11/2026
+
+A1 reutilizada para implementação e testes locais; não houve mudança de escopo nem aprovação inferida. Proposta A2 concreta em A2-PROPOSTA.md: OpenAI GPT-5.4 mini, US$ 10 para avaliação e US$ 5 adicionais para demo, teto global US$ 15. Aguardando resposta explícita; não autoriza publicação ou custo de hospedagem desconhecido. Nenhuma chamada paga foi feita. A3 permanece não solicitada, e push/PR/merge/deploy continuam dependentes de confirmação específica conforme AGENTS.md.

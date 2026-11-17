@@ -1,21 +1,21 @@
 # Nexo — tarefas do MVP demonstrativo
 
-Data: 16/11/2026, America/Sao_Paulo. Estados: TODO, IN_PROGRESS, BLOCKED, REVIEW, DONE.
+Data: 17/11/2026, America/Sao_Paulo. Estados: TODO, IN_PROGRESS, BLOCKED, REVIEW, DONE.
 A1 explicitamente aprovada; desenvolvimento local autorizado. A2 e A3 pendentes.
 
 | ID | Responsável | Dependências | Estado | Entrega e aceite |
 | --- | --- | --- | --- | --- |
 | T00 | Coordenador + S1/S5 em leitura | Nenhuma | DONE | Código, remoto, publicação, lacunas e plano A1 identificados; check/build e navegação atual verificados; PLAN e QA |
 | T01 | Coordenador + S1 | T00 + A1 | DONE | Contratos, jornadas, estados, permissões e divisão de arquivos; A1 real registrada |
-| T02 | Coordenador | T01 | IN_PROGRESS | Estrutura Worker suportada, desenvolvimento e landing preservada; build local executável |
-| T03 | S2 | T02 | IN_PROGRESS | D1, migrações, membership, sessões, autorização e endpoints; persistência e testes negativos |
-| T04 | S4 + integração S2 | T01; integrar T03 | IN_PROGRESS | Entrevista, correção, confirmação, recibo verdadeiro e recuperação de falha |
-| T05 | S3 | T01 | IN_PROGRESS | Adaptador, prompt/schema versionados, validação e limites; fixtures e falhas testadas sem chamada paga |
-| T06 | S4 + S2 | T03 + contratos T05 | IN_PROGRESS | Painel, filtros, original/ficha, revisão versionada, decisão e configurações |
+| T02 | Coordenador | T01 | DONE (local) | Estrutura Worker suportada, desenvolvimento e landing preservada; build local executável |
+| T03 | S2 | T02 | DONE (local) | D1, migrações, membership, sessões, autorização e endpoints; persistência e testes negativos |
+| T04 | S4 + integração S2 | T01; integrar T03 | DONE (local) | Entrevista, correção, confirmação, recibo verdadeiro e recuperação de falha |
+| T05 | S3 | T01 | DONE (local) | Adaptador, prompt/schema versionados, validação e limites; fixtures e falhas testadas sem chamada paga |
+| T06 | S4 + S2 | T03 + contratos T05 | DONE (local) | Painel, filtros, original/ficha, revisão versionada, decisão e configurações |
 | T07 | Coordenador + S3 | T05 + A2 | BLOCKED | IA real com dado fictício, segredo protegido, consumo medido e limites ativos; A2 ausente |
 | T08 | Coordenador | T03/T04/T06/T07 | TODO | Fluxo completo sem resposta fixa nem edição manual do banco |
-| T09 | S4 + S2 | T08 | TODO | Falhas de rede, repetição, expiração, permissão e uso em celular/teclado |
-| T10 | S5, independente dos autores | T08/T09 | TODO | Relatório PASS/FAIL/BLOCKED com evidências, testes negativos e 12 casos de IA |
+| T09 | S4 + S2 | T08 | REVIEW | Falhas de rede, repetição, expiração, permissão e uso em celular/teclado |
+| T10 | S5, independente dos autores | T08/T09 | REVIEW | Relatório PASS/FAIL/BLOCKED com evidências, testes negativos e 12 casos de IA |
 | T11 | Coordenador + autores | T10 | TODO | Correções, candidato e plano A3; nenhum defeito crítico/alto conhecido aberto |
 | T12 | Coordenador | T11 + A3 | BLOCKED | Publicação no mesmo Site e testes hospedados de identidade/persistência; A3 ausente |
 | T13 | Coordenador + responsável humano | T12 + A4 | BLOCKED | Piloto real fora do pedido atual; não executar nem solicitar A4 para esta entrega |
@@ -50,3 +50,11 @@ S2: server/, db/schema.ts, drizzle/, tests/backend.test.ts.
 S3: ai/, tests/ai.test.ts.
 S4: app/page.tsx, app/layout.tsx, app/globals.css, app/relato/, app/painel/, components/nexo/, public/nexo/.
 S5: tests/helpers/, tests/security.test.ts, docs/mvp/QA-PRE-A2.md.
+
+## Retomada local de 17/11/2026
+
+T02–T06 concluídas no escopo local anterior a A2. S2 implementou servidor e 17 testes; S3 implementou adaptador e 28 testes simulados; S4 implementou as telas; S5 escreveu 17 testes independentes e reexecutou 65 testes totais (incluindo 3 do auxiliar). Coordenador importou/preservou base, instalou dependências, integrou, aplicou migração somente local, verificou build e fluxo no navegador e preparou proposta A2. Sem subdelegação recursiva.
+
+T09/T10 têm evidências locais em QA-BROWSER-LOCAL e QA-PRE-A2; permanecem incompletas para IA real e ambiente hospedado. T08 depende de T07. Nenhuma aprovação de qualidade do modelo foi inferida dos testes com fixtures. Retenção em dias é política e exclusão manual; expurgo automático hospedado não implementado.
+
+Próxima ação dependente de Florença: A2 para modelo/limites e configuração protegida. Resolver acesso à fonte do Site existente antes de sincronização/configuração hospedada. A3 só após testes reais e revisão do candidato.

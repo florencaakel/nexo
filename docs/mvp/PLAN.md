@@ -1,5 +1,15 @@
 # Nexo — plano A1 para demonstração funcional
 
+## Atualização de continuidade — 17/11/2026
+
+T02–T06 implementadas e verificadas localmente na branch `continue-nexo-project`: APIs, adaptador sem chamadas pagas, entrevista persistente, painel, revisão manual/versionada e administração. TypeScript e build passaram; 65 testes passaram na revisão independente. Fluxo de relato → recibo → painel → decisão → recarga confirmado no navegador local. [QA-PRE-A2](QA-PRE-A2.md) e [QA-BROWSER-LOCAL](QA-BROWSER-LOCAL.md) delimitam as evidências.
+
+A2 está preparada em [A2-PROPOSTA](A2-PROPOSTA.md), ainda não aprovada. A3 não foi solicitada. IA real, avaliação dos 12 casos, orientação C10 validada, acesso ao repositório do Site e testes hospedados permanecem pendentes. Retenção automática não existe; exclusão sintética é manual.
+
+A consulta de metadados retornou Nexo v2, mas a emissão de acesso ao repositório falhou com “Sites project not found”. O original em Downloads foi preservado e a implementação foi importada no repositório local vazio; a reconciliação remota não foi realizada. OpenAI Developers está disponível para instalação, diferentemente do bloqueio administrativo relatado no pacote. Nenhuma credencial foi criada, chamada paga executada ou nova versão publicada.
+
+## Plano e fotografia histórica de T00/A1
+
 Data: 16 de novembro de 2026, America/Sao_Paulo.
 Estado: T00 concluída; A1 aprovada pela usuária. Implementação local iniciada; A2 e A3 pendentes.
 

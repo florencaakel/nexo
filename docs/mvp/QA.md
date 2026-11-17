@@ -1,3 +1,15 @@
+# Nexo — evidências atuais e histórico
+
+Atualização de 17/11/2026: TypeScript e build do aplicativo passaram. Revisão independente: **65/65 testes**, com IA simulada exclusivamente nos testes. Fluxo local de relato, recibo, painel, decisão humana e persistência após recarga confirmado no navegador.
+
+- [Revisão independente pré-A2](QA-PRE-A2.md): controles, correções, comandos e limites.
+- [Navegador local e capturas](QA-BROWSER-LOCAL.md): desktop/mobile, teclado básico, persistência e pausa.
+- [Proposta A2](A2-PROPOSTA.md): próximo gate, sem aprovação ou consumo real.
+
+IA real, qualidade pela rubrica, identidade/D1 hospedados e reconciliação remota permanecem pendentes. O conteúdo abaixo é histórico da apresentação e da auditoria T00; seus PASS não comprovam o novo MVP.
+
+---
+
 # Nexo — evidências da T00
 
 Data: 16/11/2026, America/Sao_Paulo. Escopo: auditoria, sem alteração da produção.

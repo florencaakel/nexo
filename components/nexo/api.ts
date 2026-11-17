@@ -50,7 +50,7 @@ export function useApiAction() {
       release();
       return result;
     } catch (error) {
-      if (error instanceof ApiFailure && error.status > 0 && !["OPERATION_IN_PROGRESS", "OPERATION_UNCERTAIN"].includes(error.code)) release();
+      if (error instanceof ApiFailure && error.status > 0 && error.status < 500 && !error.retryable && !["OPERATION_IN_PROGRESS", "OPERATION_UNCERTAIN"].includes(error.code)) release();
       throw error;
     } finally { busy.current = false; setPending(false); }
   }, []);

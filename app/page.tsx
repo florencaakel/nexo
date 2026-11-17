@@ -1,3 +1,5 @@
+import { LandingRuntime } from "@/components/nexo/landing-runtime";
+
 export default function HomePage() {
   return (<>
     {["styles", "sections", "experience", "narrative", "motion", "hero-lab"].map(name => <link key={name} rel="stylesheet" href={`/site/${name}.css`} />)}
@@ -144,6 +146,6 @@ export default function HomePage() {
     </div>
   </footer>
 
-<script type="module" src="/site/app.js" />
+<LandingRuntime />
 </>);
 }

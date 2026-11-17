@@ -6,6 +6,7 @@ import { analyzeCase, recoverExpiredOperation } from './processing.ts';
 
 const item=(row:CaseRow):CaseListItem=>({id:row.id,title:row.title,status:row.status,version:row.version,createdAt:row.created_at,updatedAt:row.updated_at,mode:'demo'});
 export async function detail(r:Runtime,row:CaseRow):Promise<CaseDetailDTO> {
+  if(row.lease_until && row.lease_until<=now()) { await recoverExpiredOperation(r,'analysis',row.id); row=await loadCase(r,row.id); }
   const analysis=await first<{id:string;version:number;data_json:string;model:string;prompt_version:string;schema_version:string;criteria_version:number;created_at:string}>(r,'SELECT * FROM analyses WHERE org_id=? AND case_id=? ORDER BY version DESC LIMIT 1',r.org.id,row.id);
   const reviews=await all<{id:string;author_name:string;decision:ReviewDTO['decision'];notes:string;corrected_analysis_json:string|null;created_at:string}>(r,'SELECT * FROM reviews WHERE org_id=? AND case_id=? ORDER BY case_version',r.org.id,row.id);
   return {...item(row),messages:await messages(r,row.session_id),analysis:analysis?{id:analysis.id,version:analysis.version,data:JSON.parse(analysis.data_json),model:analysis.model,promptVersion:analysis.prompt_version,schemaVersion:analysis.schema_version,criteriaVersion:analysis.criteria_version,createdAt:analysis.created_at}:null,reviews:reviews.map(review=>({id:review.id,authorName:review.author_name,decision:review.decision,notes:review.notes,correctedAnalysis:review.corrected_analysis_json?JSON.parse(review.corrected_analysis_json):null,createdAt:review.created_at})),criteria:await criteria(r,row.criteria_id),analysisError:row.analysis_error};
@@ -20,7 +21,9 @@ export async function caseApi(r:Runtime,path:string[],method:string,input:Record
     if(status) {clauses.push('status=?');values.push(status);}
     if(last) {clauses.push('(created_at<? OR (created_at=? AND id<?))');values.push(last.createdAt,last.createdAt,last.id);}
     const rows=await all<CaseRow>(r,`SELECT * FROM cases WHERE ${clauses.join(' AND ')} ORDER BY created_at DESC,id DESC LIMIT 26`,...values);
-    const page=rows.slice(0,25); const tail=page.at(-1);
+    const page=rows.slice(0,25);
+    for(let i=0;i<page.length;i++) { const row=page[i]; if(row.lease_until && row.lease_until<=now()) { await recoverExpiredOperation(r,'analysis',row.id); page[i]=await loadCase(r,row.id); } }
+    const tail=page.at(-1);
     const response:CaseListDTO={cases:page.map(item),nextCursor:rows.length>25&&tail?btoa(JSON.stringify({createdAt:tail.created_at,id:tail.id})):null}; return response;
   }
   if(!path[0]||path.length>2) fail(404,'NOT_FOUND','Rota não encontrada.');

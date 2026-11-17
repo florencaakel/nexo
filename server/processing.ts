@@ -70,6 +70,7 @@ function raiseFailure(error:AiFailure):never { fail(503,error.code,'A IA não co
 
 export async function askQuestion(r:Runtime,row:SessionRow):Promise<void> {
   const history=await messages(r,row.id); const last=history.at(-1);
+  if(history.length>=32) fail(409,'MESSAGE_LIMIT','O atendimento atingiu o limite de mensagens. Confira o relato para enviar.');
   if(!last||last.role!=='user') fail(409,'ANSWER_REQUIRED','Responda à pergunta atual antes de continuar.');
   if(row.question_count>=MAX_QUESTIONS||row.question_ready||participantAskedToStop(history)) fail(409,'QUESTION_LIMIT','Confira suas respostas e envie o relato quando desejar.');
   const selected=await criteria(r,row.criteria_id);

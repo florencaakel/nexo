@@ -161,7 +161,8 @@ test('lease interrompido converte reserva em custo incerto e permite só retomad
     h.context.db.prepare("INSERT INTO ai_operations(id,org_id,resource_id,kind,attempts) VALUES (?,'nexo-demo',?,'analysis',1)").bind(`analysis:${id}`,id),
     h.context.db.prepare("INSERT INTO ai_usage(id,org_id,resource_id,operation_id,kind,status,reserved_microusd,created_at) VALUES ('interrupted-fixture','nexo-demo',?,?,'analysis','reserved',100,?)").bind(id,`analysis:${id}`,time),
   ]);
-  // The recovered version differs, requiring state refresh and explicit retry.
+  // Reading recovers bookkeeping only; a new network request stays explicit.
+  const receipt=(await h.call<SessionDTO>(`intake-sessions/${sent.id}`)).data.receipt!;assert.equal(receipt.status,'FALHA_ANALISE');assert.equal(receipt.version,3);
   assert.equal((await h.call(`cases/${id}/analysis`,'POST',{expectedVersion:2})).status,409);assert.equal(h.provider.calls,0);
   const current=(await h.call<CaseDetailDTO>(`cases/${id}`)).data;assert.equal(current.status,'FALHA_ANALISE');assert.equal(current.version,3);
   let settings=(await h.call<SettingsDTO>('admin/settings')).data;assert.equal(settings.budgetReservedMicrousd,0);assert.equal(settings.budgetSpentMicrousd,100);

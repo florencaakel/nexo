@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState } from "react";
 import type { ApiErrorBody } from "@/lib/contracts";
+import { BROWSER_DEMO } from "@/lib/runtime-mode";
 
 export class ApiFailure extends Error {
   constructor(public status: number, public code: string, message: string, public requestId = "", public retryable = false) { super(message); }
@@ -13,7 +14,9 @@ export async function readApi<T>(path: string, signal?: AbortSignal): Promise<T>
 
 async function request<T>(path: string, options: RequestInit): Promise<T> {
   let response: Response;
-  try { response = await fetch(path, { credentials: "same-origin", ...options }); }
+  try { response = BROWSER_DEMO
+    ? await (await import("../../browser/runtime")).handleBrowserRequest(path, options)
+    : await fetch(path, { credentials: "same-origin", ...options }); }
   catch (error) {
     if (error instanceof DOMException && error.name === "AbortError") throw error;
     throw new ApiFailure(0, "NETWORK_ERROR", "Não foi possível confirmar a operação. Confira sua conexão e tente novamente; o mesmo envio não será duplicado.", "", true);

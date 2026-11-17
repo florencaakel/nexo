@@ -13,7 +13,10 @@
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
     "db:generate": "drizzle-kit generate",
     "check": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test tests/*.test.ts tests/helpers/*.test.ts"
+    "test": "node --experimental-strip-types --test tests/*.test.ts tests/helpers/*.test.ts",
+    "build:vercel": "vite build --config vite.browser.config.ts",
+    "dev:vercel": "vite --config vite.browser.config.ts",
+    "preview:vercel": "vite preview --config vite.browser.config.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
@@ -37,6 +40,7 @@
     "react-resizable-panels": "^4.12.2",
     "recharts": "^3.8.0",
     "sonner": "^2.0.8",
+    "sql.js": "1.16.0",
     "tailwind-merge": "3.6.0",
     "vaul": "^1.1.2",
     "zod": "^3.25.76"
@@ -48,11 +52,13 @@
     "@types/node": "22.19.19",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "@types/sql.js": "1.4.11",
     "@vitejs/plugin-react": "6.0.2",
     "@vitejs/plugin-rsc": "0.5.26",
     "drizzle-kit": "0.31.10",
     "eslint": "9.39.4",
     "eslint-config-next": "16.3.4",
+    "fake-indexeddb": "6.2.8",
     "json-rpc-2.0": "1.7.1",
     "raw-body": "3.0.2",
     "react-server-dom-webpack": "19.2.6",

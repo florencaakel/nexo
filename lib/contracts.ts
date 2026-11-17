@@ -2,6 +2,7 @@
 export const CONTRACT_VERSION = 'nexo-api-v1';
 export const MAX_PARTICIPANT_CHARS = 10_000;
 export const MAX_QUESTIONS = 8;
+export type ProcessingMode = 'rules' | 'external';
 export type Role = 'tester' | 'reviewer' | 'admin';
 export type CaseStatus = 'RASCUNHO' | 'RECEBIDO' | 'EM_ANALISE' | 'AGUARDANDO_REVISAO' | 'FALHA_ANALISE' | 'PENDENTE_INFORMACOES' | 'ACEITO_PARA_ATENDIMENTO' | 'ENCERRADO';
 export type Decision = 'PENDENTE_INFORMACOES' | 'ACEITO_PARA_ATENDIMENTO' | 'ENCERRADO';
@@ -31,13 +32,14 @@ export interface ReceiptDTO { caseId: string; status: CaseStatus; version: numbe
 export interface SessionDTO {
   id: string; version: number; state: 'draft'|'submitted'; mode: 'demo';
   messages: MessageDTO[]; questionCount: number; expiresAt: string;
+  processingMode?: ProcessingMode;
   canAsk: boolean; aiAvailable: boolean; receipt: ReceiptDTO|null;
 }
 export interface MeDTO {
   user: {id: string; displayName: string};
   organization: {id: string; name: string}|null;
   roles: Role[];
-  capabilities: {intakeOpen: boolean; aiConfigured: boolean; aiEnabled: boolean; realIntakeEnabled: false};
+  capabilities: {processingMode?: ProcessingMode; intakeOpen: boolean; aiConfigured: boolean; aiEnabled: boolean; realIntakeEnabled: false};
 }
 export interface CriteriaDTO { id: string; version: number; text: string; createdAt: string }
 export interface AnalysisDTO {
@@ -52,6 +54,7 @@ export interface CaseListItem { id: string; title: string; status: CaseStatus; v
 export interface CaseDetailDTO extends CaseListItem { messages: MessageDTO[]; analysis: AnalysisDTO|null; reviews: ReviewDTO[]; criteria: CriteriaDTO; analysisError: string|null }
 export interface CaseListDTO { cases: CaseListItem[]; nextCursor: string|null }
 export interface SettingsDTO {
+  processingMode?: ProcessingMode;
   intakeEnabled: boolean; aiEnabled: boolean; aiConfigured: boolean; realIntakeEnabled: false;
   budgetLimitMicrousd: number; budgetSpentMicrousd: number; budgetReservedMicrousd: number;
   retentionDays: number; version: number;

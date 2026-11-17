@@ -5,6 +5,8 @@ export interface QuestionData { question: string|null; ready: boolean; reason: s
 export interface AiMeta { model: string; promptVersion: string; schemaVersion: string; requestId: string|null; durationMs: number; inputTokens: number; outputTokens: number; usageEstimated: boolean; estimatedCostMicrousd: number }
 export interface AiResult<T> { data: T; meta: AiMeta }
 export interface AiProvider {
+  /** Local rules never use network or billable tokens. Omitted only by legacy adapters/tests. */
+  readonly kind?: 'rules' | 'external';
   readonly configured: boolean;
   readonly model: string;
   maxCostMicrousd(kind: AiKind): number;

@@ -28,10 +28,10 @@ function Frame({ children, me, current }: { children: ReactNode; me?: MeDTO; cur
     </div></header>
     <div className="nx-context-strip"><div className="nx-width"><span><span className="nx-dot" />Somente casos fictícios</span><span>{BROWSER_DEMO ? "Sem login · revisão simulada por você" : me?.organization?.name || "Nexo — Ambiente de Demonstração"}</span></div></div>
     <main id="conteudo" tabIndex={-1} className="nx-main nx-width">
-      {BROWSER_DEMO && <div className="nx-browser-notice"><strong>Demonstração sem login.</strong> Relatos e decisões ficam só neste navegador e dispositivo, sem sincronização. Limpar os dados do navegador remove os registros. Use apenas casos fictícios.</div>}
+      {BROWSER_DEMO && <div className="nx-browser-notice"><strong>Demonstração sem login.</strong> Textos salvos e decisões ficam neste navegador e dispositivo, sem sincronização. O ditado opcional pode usar o serviço de voz do navegador, com aviso antes de ativar. Limpar os dados do navegador remove os registros. Use apenas casos fictícios.</div>}
       {children}
     </main>
-    <footer className="nx-footer nx-width"><span>{BROWSER_DEMO ? "Nexo · Demonstração local no navegador" : "Nexo · Produto em desenvolvimento"}</span><span>Tecnologia conecta. Pessoas decidem.</span></footer>
+    <footer className="nx-footer nx-width"><span>{BROWSER_DEMO ? "Nexo · Demonstração local no navegador" : "Nexo · Produto em desenvolvimento"}</span><span>Demonstração sem atendimento jurídico real.</span></footer>
   </div>;
 }
 

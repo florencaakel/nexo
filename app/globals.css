@@ -340,3 +340,14 @@ body {
 .nx-example-button { display:inline-block; margin-bottom:20px; }
 .nx-browser-notice { color:#69451f; background:#fff6eb; border:1px solid #f0d7b7; border-radius:7px; padding:14px 18px; font-size:.82rem; line-height:1.6; margin-bottom:30px; max-width:none; }
 .nx-browser-notice strong { font-weight:650; }
+
+/* Orientação administrativa: escolhas explícitas, junto da conferência do relato. */
+.nx-referral { margin-bottom:30px; background:#f8faff; }
+.nx-referral>.nx-field { margin-top:20px; }
+.nx-referral .nx-notice { margin-top:24px; }
+.nx-referral .nx-notice h3 { margin-bottom:12px; font-size:1.25rem; }
+.nx-referral details { margin-top:18px; }
+.nx-referral summary,.nx-referral-receipt summary { cursor:pointer; font-weight:600; color:#1654cf; }
+.nx-referral-receipt { text-align:left; margin-block:24px; padding:24px; background:#f4f7fd; border-left:3px solid #f47721; }
+.nx-referral-receipt p { margin-block:18px; font-size:.93rem; }
+@media(max-width:600px) { .nx-referral { padding:22px 16px; } .nx-referral-receipt { padding:18px; } }

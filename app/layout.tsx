@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Nexo | Entrevista guiada e revisão humana", template: "%s | Nexo" },
+  title: { default: "Nexo | Apoio ao primeiro atendimento de consumo", template: "%s | Nexo" },
   description: "Relatos organizados por regras, com referências ao texto original. Demonstração com casos fictícios, entrevista guiada e revisão humana.",
   icons: {
     icon: "/site/favicon.svg",

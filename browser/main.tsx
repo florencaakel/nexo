@@ -10,7 +10,7 @@ const Case = lazy(() => import('../app/painel/casos/[id]/page'));
 const path = window.location.pathname.replace(/\/$/, '') || '/';
 const caseMatch = /^\/painel\/casos\/([a-zA-Z0-9_-]{1,100})$/.exec(path);
 const params = Promise.resolve({ id: caseMatch?.[1] || '' });
-const titles: Record<string, string> = { '/': 'Nexo | Entrevista guiada e revisão humana', '/relato': 'Relato fictício | Nexo', '/painel': 'Painel da demonstração | Nexo', '/painel/configuracoes': 'Configurações deste navegador | Nexo' };
+const titles: Record<string, string> = { '/': 'Nexo | Apoio ao primeiro atendimento de consumo', '/relato': 'Relato fictício | Nexo', '/painel': 'Painel da demonstração | Nexo', '/painel/configuracoes': 'Configurações deste navegador | Nexo' };
 document.title = titles[path] || (caseMatch ? 'Revisão simulada | Nexo' : 'Página não encontrada | Nexo');
 if (path !== '/') {
   const robots = document.createElement('meta'); robots.name = 'robots'; robots.content = 'noindex, nofollow'; document.head.appendChild(robots);

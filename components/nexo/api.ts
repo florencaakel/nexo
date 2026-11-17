@@ -35,15 +35,22 @@ export function useApiAction() {
     if (busy.current) throw new ApiFailure(409, "CLIENT_BUSY", "Aguarde a operação em andamento.");
     const payload = JSON.stringify(body);
     const fingerprint = `${method}:${path}:${payload}`;
-    const key = attempts.current.get(fingerprint) || crypto.randomUUID();
-    attempts.current.set(fingerprint, key);
     busy.current = true; setPending(true);
+    // Store only a digest and an opaque operation key, never the participant text.
+    const digest = Array.from(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(fingerprint))), n => n.toString(16).padStart(2, "0")).join("");
+    const storageKey = `nexo-operation:${digest}`;
+    let stored: string | null = null;
+    try { stored = sessionStorage.getItem(storageKey); } catch { /* In-memory retry remains available. */ }
+    const key = attempts.current.get(fingerprint) || stored || crypto.randomUUID();
+    attempts.current.set(fingerprint, key);
+    try { sessionStorage.setItem(storageKey, key); } catch { /* Storage can be unavailable in private browsers. */ }
+    const release = () => { attempts.current.delete(fingerprint); try { sessionStorage.removeItem(storageKey); } catch { /* optional storage */ } };
     try {
       const result = await request<T>(path, { method, body: payload, headers: { "Content-Type": "application/json", "X-Nexo-Request": "1", "Idempotency-Key": key } });
-      attempts.current.delete(fingerprint);
+      release();
       return result;
     } catch (error) {
-      if (error instanceof ApiFailure && error.status === 409) attempts.current.delete(fingerprint);
+      if (error instanceof ApiFailure && error.status > 0 && !["OPERATION_IN_PROGRESS", "OPERATION_UNCERTAIN"].includes(error.code)) release();
       throw error;
     } finally { busy.current = false; setPending(false); }
   }, []);

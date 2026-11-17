@@ -1,5 +1,6 @@
 export default function HomePage() {
   return (<>
+    {["styles", "sections", "experience", "narrative", "motion", "hero-lab"].map(name => <link key={name} rel="stylesheet" href={`/site/${name}.css`} />)}
 
   
   <header className="site-header">
@@ -11,7 +12,7 @@ export default function HomePage() {
       </nav>
     </div>
   </header>
-  <main id="conteudo" tabIndex="-1">
+  <main id="conteudo" tabIndex={-1}>
     <section id="inicio" className="hero" aria-labelledby="hero-title">
       <div className="container hero-grid">
         <div className="hero-copy">

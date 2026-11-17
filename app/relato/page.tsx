@@ -1,0 +1,111 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import { MAX_PARTICIPANT_CHARS, MAX_QUESTIONS, type MeDTO, type SessionDTO } from "@/lib/contracts";
+import { dateLabel, readApi, useApiAction } from "@/components/nexo/api";
+import { Failure, Gate, Notice, PageHeading, StatusBadge } from "@/components/nexo/shell";
+
+export default function RelatoPage() {
+  return <Gate roles={["tester", "admin"]} current="relato">{me => <Interview me={me} />}</Gate>;
+}
+
+function Interview({ me }: { me: MeDTO }) {
+  const [session, setSession] = useState<SessionDTO | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<unknown>(null);
+  const [text, setText] = useState("");
+  const [reviewing, setReviewing] = useState(false);
+  const [answers, setAnswers] = useState<Record<string, string>>({});
+  const [confirmed, setConfirmed] = useState(false);
+  const [saved, setSaved] = useState("");
+  const { mutate, pending } = useApiAction();
+  const answerRef = useRef<HTMLTextAreaElement>(null);
+  const used = session?.messages.filter(message => message.role === "user").reduce((total, message) => total + message.content.length, 0) || 0;
+  const editedCount = Object.values(answers).reduce((total, value) => total + value.length, 0);
+  const path = session ? `/api/intake-sessions/${encodeURIComponent(session.id)}` : "";
+
+  function accept(next: SessionDTO) {
+    setSession(next);
+    setAnswers(Object.fromEntries(next.messages.filter(message => message.role === "user").map(message => [message.id, message.content])));
+    const url = new URL(window.location.href);
+    url.searchParams.set("sessao", next.id);
+    window.history.replaceState(null, "", url.pathname + url.search);
+  }
+
+  useEffect(() => {
+    const controller = new AbortController();
+    const id = new URLSearchParams(window.location.search).get("sessao");
+    if (!id) { setLoading(false); return; }
+    readApi<SessionDTO>(`/api/intake-sessions/${encodeURIComponent(id)}`, controller.signal)
+      .then(accept).catch(reason => { if (!controller.signal.aborted) setError(reason); })
+      .finally(() => { if (!controller.signal.aborted) setLoading(false); });
+    return () => controller.abort();
+  }, []);
+
+  async function refresh() {
+    if (!session) { window.location.reload(); return; }
+    setError(null);
+    try { accept(await readApi<SessionDTO>(path)); setSaved("Estado salvo atualizado."); }
+    catch (reason) { setError(reason); }
+  }
+
+  async function start() {
+    setError(null); setSaved("");
+    try { accept(await mutate<SessionDTO>("/api/intake-sessions", "POST", { mode: "demo" })); }
+    catch (reason) { setError(reason); }
+  }
+
+  async function saveAnswer() {
+    if (!session || !text.trim()) return;
+    setError(null); setSaved("");
+    try {
+      accept(await mutate<SessionDTO>(`${path}/messages`, "POST", { content: text, expectedVersion: session.version }));
+      setText(""); setSaved("Resposta salva."); answerRef.current?.focus();
+    } catch (reason) { setError(reason); }
+  }
+
+  async function ask() {
+    if (!session) return;
+    setError(null); setSaved("");
+    try { accept(await mutate<SessionDTO>(`${path}/next-question`, "POST", { expectedVersion: session.version })); answerRef.current?.focus(); }
+    catch (reason) { setError(reason); await readApi<SessionDTO>(path).then(accept).catch(() => {}); }
+  }
+
+  async function saveCorrections() {
+    if (!session) return;
+    setError(null); setSaved("");
+    try {
+      accept(await mutate<SessionDTO>(`${path}/messages`, "PUT", { answers: session.messages.filter(message => message.role === "user").map(message => ({ id: message.id, content: answers[message.id] || "" })), expectedVersion: session.version }));
+      setSaved("Correções salvas. Confira o relato e confirme o envio.");
+    } catch (reason) { setError(reason); }
+  }
+
+  async function submit() {
+    if (!session || !confirmed) return;
+    setError(null); setSaved("");
+    try { accept(await mutate<SessionDTO>(`${path}/submit`, "POST", { expectedVersion: session.version, confirmedFictional: true })); setReviewing(false); }
+    catch (reason) { setError(reason); }
+  }
+
+  async function analyze() {
+    if (!session?.receipt) return;
+    setError(null); setSaved("");
+    try {
+      await mutate(`/api/cases/${encodeURIComponent(session.receipt.caseId)}/analysis`, "POST", { expectedVersion: session.receipt.version });
+      accept(await readApi<SessionDTO>(path));
+    } catch (reason) { setError(reason); await readApi<SessionDTO>(path).then(accept).catch(() => {}); }
+  }
+
+  const dirty = session?.messages.some(message => message.role === "user" && answers[message.id] !== message.content);
+  const analysisAllowed = session?.aiAvailable && ["RECEBIDO", "FALHA_ANALISE"].includes(session.receipt?.status || "");
+
+  return <>
+    <PageHeading eyebrow="Demonstração de consumidor" title={session?.receipt ? "Relato recebido." : "Toda história tem um começo."} description="Use apenas situações fictícias. A Nexo organiza informações; uma pessoa revisa e decide os próximos passos." />
+    <Failure error={error} returnTo="/relato" />
+    {error && <div className="nx-actions"><button className="nx-button nx-secondary" disabled={pending} onClick={refresh}>Consultar estado salvo</button>{!session && <a className="nx-inline-link" href="/relato">Começar outro relato</a>}</div>}
+    {saved && <Notice kind="success">{saved}</Notice>}
+    {loading ? <p role="status">Buscando seu relato…</p> : !session ? <div className="nx-intro-grid"><section className="nx-paper"><h2>Um espaço para testar o fluxo.</h2><p>Você conta o que aconteceu, confere as informações e envia um caso fictício. O relato fica salvo para revisão.</p><ol className="nx-steps"><li><span>1</span><div><h3>Conte a situação</h3><p>Um problema de cobrança, cancelamento, produto ou serviço.</p></div></li><li><span>2</span><div><h3>Esclareça e confira</h3><p>Quando disponível, a IA faz perguntas. Você pode responder “não sei” e encerrar quando quiser.</p></div></li><li><span>3</span><div><h3>Envie para revisão</h3><p>O recebimento é confirmado depois que o caso é salvo.</p></div></li></ol>{!me.capabilities.intakeOpen && <Notice>Novos relatos estão pausados pela administração.</Notice>}<button className="nx-button nx-primary" disabled={pending || !me.capabilities.intakeOpen} onClick={start}>{pending ? "Iniciando…" : "Começar relato fictício"}</button></section><aside className="nx-side-note"><span className="nx-large-symbol" aria-hidden="true">×</span><h2>O cuidado começa nos dados.</h2><p>Não inclua CPF, dados bancários, endereço completo ou informações de pessoas reais. Não há envio de documentos nem atendimento jurídico real.</p><p>Guarde o link da sessão para retomar em outra sessão autorizada até sua expiração.</p></aside></div> : session.receipt ? <section className="nx-paper nx-receipt"><span className="nx-receipt-mark" aria-hidden="true">✓</span><h2>Seu caso fictício foi salvo.</h2><StatusBadge status={session.receipt.status} /><dl className="nx-meta"><div><dt>Identificador do caso</dt><dd><code>{session.receipt.caseId}</code></dd></div><div><dt>Recebido em</dt><dd>{dateLabel(session.receipt.receivedAt)}</dd></div></dl><p>O envio está concluído. A ficha, quando gerada, será conferida por uma pessoa autorizada. Não há promessa de atendimento ou prazo de retorno.</p>{!session.aiAvailable && <Notice>A IA está indisponível. O relato permanece salvo; a análise pode ser retomada quando estiver habilitada.</Notice>}{session.receipt.status === "EM_ANALISE" && <Notice>A análise está em andamento. Consulte o estado salvo em alguns instantes.</Notice>}{session.receipt.status === "FALHA_ANALISE" && <Notice>A análise não foi concluída. O relato continua disponível para revisão.</Notice>}<div className="nx-actions">{analysisAllowed && <button className="nx-button nx-primary" disabled={pending} onClick={analyze}>{pending ? "Gerando ficha…" : "Gerar ficha para revisão"}</button>}<button className="nx-button nx-secondary" disabled={pending} onClick={refresh}>Atualizar estado</button><a className="nx-inline-link" href="/relato">Começar outro relato</a></div></section> : <div className="nx-work-grid"><section className="nx-paper"><div className="nx-section-header"><h2>{reviewing ? "Confira suas respostas." : "Conte o que aconteceu."}</h2><span className="nx-small">{session.questionCount}/{MAX_QUESTIONS} perguntas</span></div><div className="nx-progress" aria-label={reviewing ? "Etapa 2 de 3: conferir" : "Etapa 1 de 3: relatar"}><span className="is-current">Relatar</span><span className={reviewing ? "is-current" : ""}>Conferir</span><span>Enviar</span></div>
+      {reviewing ? <><p className="nx-muted">Corrija o que precisar. Salve as correções antes de confirmar o envio.</p><div className="nx-answer-list">{session.messages.map(message => message.role === "assistant" ? <p className="nx-question" key={message.id}>{message.content}</p> : <label className="nx-field" key={message.id}><span>Resposta {session.messages.filter(m => m.role === "user" && m.sequence <= message.sequence).length}</span><textarea rows={5} value={answers[message.id] || ""} maxLength={MAX_PARTICIPANT_CHARS} disabled={pending} onChange={event => { setAnswers(value => ({ ...value, [message.id]: event.target.value })); setConfirmed(false); }} /></label>)}</div><p className="nx-small">{editedCount.toLocaleString("pt-BR")} de {MAX_PARTICIPANT_CHARS.toLocaleString("pt-BR")} caracteres.</p><div className="nx-actions"><button className="nx-button nx-secondary" disabled={pending || !dirty || editedCount > MAX_PARTICIPANT_CHARS || Object.values(answers).some(value => !value.trim())} onClick={saveCorrections}>Salvar correções</button><button className="nx-button nx-quiet" disabled={pending} onClick={() => { setReviewing(false); setConfirmed(false); }}>Voltar ao relato</button></div><label className="nx-check"><input type="checkbox" checked={confirmed} disabled={pending || !!dirty} onChange={event => setConfirmed(event.target.checked)} /><span>Conferi o relato e confirmo que todos os dados e acontecimentos são fictícios.</span></label><button className="nx-button nx-primary" disabled={pending || !confirmed || !!dirty} onClick={submit}>{pending ? "Enviando…" : "Confirmar e enviar relato"}</button></> : <><div className="nx-conversation" aria-label="Histórico salvo">{session.messages.length === 0 ? <p className="nx-muted">Qual é a situação? O que aconteceu e o que você já tentou fazer?</p> : session.messages.map(message => <article className={`nx-message nx-message-${message.role}`} key={message.id}><span>{message.role === "user" ? "Seu relato fictício" : "Pergunta da Nexo"}</span><p>{message.content}</p><small>{dateLabel(message.createdAt)}</small></article>)}</div><form onSubmit={event => { event.preventDefault(); void saveAnswer(); }}><label className="nx-field"><span>{session.messages.length ? "Sua resposta ou complemento" : "Seu relato fictício"}</span><textarea ref={answerRef} rows={6} value={text} maxLength={Math.max(0, MAX_PARTICIPANT_CHARS - used)} onChange={event => setText(event.target.value)} disabled={pending} aria-describedby="answer-help" placeholder="Escreva uma situação fictícia…" /></label><div className="nx-input-footer"><p id="answer-help" className="nx-small">{(used + text.length).toLocaleString("pt-BR")} / {MAX_PARTICIPANT_CHARS.toLocaleString("pt-BR")} caracteres</p><button className="nx-button nx-primary" disabled={pending || !text.trim()}>{pending ? "Salvando…" : "Salvar resposta"}</button></div></form>{!session.aiAvailable && <Notice>A IA está indisponível. Você pode salvar o relato e enviá-lo para revisão humana.</Notice>}<div className="nx-actions">{session.canAsk && <button className="nx-button nx-secondary" disabled={pending || !!text.trim() || used === 0} onClick={ask}>{pending ? "Aguarde…" : "Pedir próxima pergunta"}</button>}<button className="nx-button nx-secondary" disabled={pending || used === 0 || !!text.trim()} onClick={() => { setReviewing(true); setConfirmed(false); setSaved(""); }}>Conferir e enviar</button></div>{!!text.trim() && used > 0 && <p className="nx-small">Salve sua resposta antes de continuar.</p>}</>}
+      </section><aside className="nx-side-note"><h2>Uma informação por vez.</h2><p>Você não precisa conhecer termos jurídicos ou preencher todas as lacunas. “Não sei” também é uma resposta.</p><p>Relate documentos apenas como mencionados. Nenhum documento será recebido ou analisado neste teste.</p><div className="nx-session-note"><span>Rascunho salvo no servidor</span><p>Retome com o link desta página.</p><small>Disponível até {dateLabel(session.expiresAt)}.</small></div><button className="nx-inline-link" disabled={pending} onClick={refresh}>Atualizar estado salvo</button></aside></div>}
+  </>;
+}

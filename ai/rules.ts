@@ -9,7 +9,7 @@ export const RULES_VERSION = 'nexo-regras-v1';
 
 const topics = [
   { key: 'situacao', question: 'Você pode contar o que aconteceu na situação fictícia?',
-    found: /cobran[çc]|cancel|compr|produto|servi[çc]o|alug|loca[çc]|contrat|falh|quebr|demiti|paguei|pagamento|fa[ií]sca|queimad/iu,
+    found: /cobran[çc]|cobr(?:ou|ad[oa]s?|am|aram)|cancel|compr|produto|servi[çc]o|alug|loca[çc]|contrat|falh|quebr|demiti|paguei|pagamento|fa[ií]sca|queimad/iu,
     gap: 'Conferir a descrição do que aconteceu.' },
   { key: 'envolvidos', question: 'Quem está envolvido nessa situação fictícia?',
     found: /empresa|loja|oficina|operadora|clube|servi[çc]o\s+exemplo|assinatura\s+exemplo|locador|locadora|fornecedor|pessoa\s+exemplo/iu,

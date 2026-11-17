@@ -50,7 +50,7 @@ export async function handleApi(request: Request, path: string[], context: Serve
     if (!context.identity) fail(401, 'AUTH_REQUIRED', 'Entre com sua conta para continuar.');
     const access = await membership(context);
     if (request.method === 'GET' && path.join('/') === 'me') {
-      const me: MeDTO = { user:context.identity, organization:access ? {id:access.org.id,name:access.org.name} : null, roles:access ? rolesOf(access.member.roles_json) : [], capabilities:{ intakeOpen:!!access?.org.intake_enabled, aiConfigured:context.config.aiApproved && context.provider.configured, aiEnabled:!!access?.org.ai_enabled, realIntakeEnabled:false } };
+      const me: MeDTO = { user:context.identity, organization:access ? {id:access.org.id,name:access.org.name} : null, roles:access ? rolesOf(access.member.roles_json) : [], capabilities:{ processingMode:context.provider.kind==='rules'?'rules':'external', intakeOpen:!!access?.org.intake_enabled, aiConfigured:context.provider.configured && (context.provider.kind==='rules'||context.config.aiApproved), aiEnabled:context.provider.kind==='rules'?!!access?.org.intake_enabled:!!access?.org.ai_enabled, realIntakeEnabled:false } };
       return json(me);
     }
     if (!access) fail(403, 'MEMBERSHIP_REQUIRED', 'Sua conta ainda não está autorizada para esta demonstração.');

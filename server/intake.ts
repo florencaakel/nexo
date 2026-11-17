@@ -7,7 +7,7 @@ export async function sessionDTO(r: Runtime, row: SessionRow): Promise<SessionDT
   const history = await messages(r,row.id);
   let item = await first<CaseRow>(r,'SELECT * FROM cases WHERE org_id=? AND session_id=?',r.org.id,row.id);
   if (item?.lease_until && item.lease_until<=now()) { await recoverExpiredOperation(r,'analysis',item.id); item=await first<CaseRow>(r,'SELECT * FROM cases WHERE org_id=? AND session_id=?',r.org.id,row.id); }
-  return {id:row.id,version:row.version,state:row.state,mode:'demo',messages:history,questionCount:row.question_count,expiresAt:row.expires_at,canAsk:row.state==='draft' && !row.question_ready && row.question_count<MAX_QUESTIONS && history.at(-1)?.role==='user',aiAvailable:aiAvailable(r),receipt:item ? {caseId:item.id,status:item.status,version:item.version,receivedAt:item.created_at} : null};
+  return {id:row.id,version:row.version,state:row.state,mode:'demo',processingMode:r.context.provider.kind==='rules'?'rules':'external',messages:history,questionCount:row.question_count,expiresAt:row.expires_at,canAsk:row.state==='draft' && !row.question_ready && row.question_count<MAX_QUESTIONS && history.at(-1)?.role==='user',aiAvailable:aiAvailable(r),receipt:item ? {caseId:item.id,status:item.status,version:item.version,receivedAt:item.created_at} : null};
 }
 
 export async function intake(r: Runtime, path: string[], method: string, input: Record<string, unknown>): Promise<SessionDTO> {

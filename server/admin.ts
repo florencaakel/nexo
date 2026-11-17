@@ -1,5 +1,5 @@
 import type { MembershipDTO, UsageDTO } from '../lib/contracts.ts';
-import { all, checkVersion, criteria, expectedVersion, fail, first, inputText, now, orgFresh, rolesOf, settings, stmt, strictKeys, uid, type MemberRow, type Runtime } from './core.ts';
+import { all, checkVersion, criteria, expectedVersion, fail, first, inputText, now, orgFresh, rolesOf, settings, stmt, strictKeys, uid, usesLocalRules, type MemberRow, type Runtime } from './core.ts';
 
 async function members(r:Runtime):Promise<{members:MembershipDTO[]}> {
   return {members:(await all<MemberRow>(r,'SELECT * FROM memberships WHERE org_id=? ORDER BY display_name,user_id',r.org.id)).map(m=>({userId:m.user_id,displayName:m.display_name,roles:rolesOf(m.roles_json),active:!!m.active}))};
@@ -12,7 +12,18 @@ export async function admin(r:Runtime,path:string[],method:string,input:Record<s
       strictKeys(input,['expectedVersion','intakeEnabled','aiEnabled','budgetLimitMicrousd','retentionDays']);
       const version=expectedVersion(input); await orgFresh(r); checkVersion(r.org.settings_version,version);
       for(const key of ['intakeEnabled','aiEnabled']) if(key in input&&typeof input[key]!=='boolean') fail(400,'INVALID_INPUT','Informe uma opção válida.');
-      const budget=input.budgetLimitMicrousd??r.org.budget_limit_microusd; const retention=input.retentionDays??r.org.retention_days;
+      const retention=input.retentionDays??r.org.retention_days;
+      if(!Number.isSafeInteger(retention)||Number(retention)<1||Number(retention)>365) fail(400,'INVALID_RETENTION','Informe retenção entre 1 e 365 dias.');
+      if(usesLocalRules(r)) {
+        if(input.aiEnabled===true||input.budgetLimitMicrousd!==undefined&&input.budgetLimitMicrousd!==0) fail(400,'PAID_AI_DISABLED','Esta versão usa somente regras locais. IA paga e orçamento de API não podem ser habilitados.');
+        // Keep legacy budget, costs and switches intact. The sole runtime pause
+        // for rules is intake_enabled; login never changes it.
+        const result=await stmt(r,'UPDATE organizations SET intake_enabled=?,retention_days=?,settings_version=settings_version+1 WHERE id=? AND settings_version=?',input.intakeEnabled===undefined?r.org.intake_enabled:input.intakeEnabled?1:0,retention,r.org.id,version).run();
+        if(!result.meta.changes) fail(409,'SETTINGS_CONFLICT','As configurações mudaram. Atualize antes de continuar.');
+        await stmt(r,"INSERT INTO audit_events (id,org_id,actor_id,action,request_id,created_at) VALUES (?,?,?,'settings.updated',?,?)",uid(),r.org.id,r.actor.id,r.requestId,now()).run();
+        return settings(r,await orgFresh(r));
+      }
+      const budget=input.budgetLimitMicrousd??r.org.budget_limit_microusd;
       if(!Number.isSafeInteger(budget)||Number(budget)<0||Number(budget)>r.context.config.maxBudgetMicrousd) fail(400,'INVALID_BUDGET','O limite deve respeitar o teto aprovado no servidor.');
       if(!Number.isSafeInteger(retention)||Number(retention)<1||Number(retention)>365) fail(400,'INVALID_RETENTION','Informe retenção entre 1 e 365 dias.');
       if(input.aiEnabled===true&&(!r.context.config.aiApproved||!r.context.provider.configured)) fail(409,'AI_NOT_CONFIGURED','A integração de IA ainda precisa ser aprovada e configurada.');

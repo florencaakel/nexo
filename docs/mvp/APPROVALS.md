@@ -61,3 +61,9 @@ Publicação autorizada executada: READY em 17/11/2026, deployment `dpl_3V6mou3R
 ## Retorno da banca e voz — desenvolvimento autorizado
 
 Florença pediu adicionar a opção de áudio em vez de escrever, uma resposta sobre encaminhar ao jurídico e aplicar os comentários da banca. Isso autoriza as alterações locais de interface e função. A versão preparada usa ditado nativo com ciência obrigatória sobre processamento pelo fornecedor do navegador; indicação administrativa baseada em escolhas explícitas; nenhuma avaliação automática de mérito jurídico. Não houve aprovação específica de novo deploy, serviço pago ou uso real de microfone nesta rodada. A pergunta opcional sobre o ditado ainda aguarda resposta. O estado concreto está em RETORNO-BANCA.md.
+
+## Publicação da versão com voz e retorno da banca — autorizada
+
+Após a entrega das prévias, dos 119 testes e da pergunta “Você aprova esta versão com ditado opcional e a publicação em aps-nexo.vercel.app?”, Florença respondeu: **“pode publicar”**.
+
+Escopo: um novo deploy de produção do candidato `outputs/nexo-vercel-6oGVPJ`, fonte funcional `98abab0`, no projeto Vercel existente `aps-nexo`. Inclui apresentação revisada, ditado opcional nativo com ciência sobre processamento pelo navegador, indicação administrativa de encaminhamento e ficha automática. Sem API paga, banco contratado ou novos serviços. O teste com captação real de microfone permanece pendente e foi informado antes da aprovação. Esta aprovação não autoriza push, PR, merge, exclusões ou publicações posteriores.

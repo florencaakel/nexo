@@ -67,7 +67,7 @@ export async function intake(r: Runtime, path: string[], method: string, input: 
     const caseId=uid();
     const result=await r.context.db.batch([
       stmt(r,'UPDATE intake_sessions SET state=\'submitted\',version=version+1,mutation_token=?,updated_at=? WHERE org_id=? AND id=? AND owner_id=? AND version=? AND state=\'draft\' AND lease_token IS NULL',r.token,time,r.org.id,row.id,r.actor.id,expected),
-      stmt(r,'INSERT INTO cases (id,org_id,session_id,owner_id,criteria_id,title,created_at,updated_at) SELECT ?,org_id,id,owner_id,criteria_id,?,?,? FROM intake_sessions WHERE id=? AND org_id=? AND mutation_token=?',caseId,'Relato fictício de consumidor',time,time,row.id,r.org.id,r.token),
+      stmt(r,'INSERT INTO cases (id,org_id,session_id,owner_id,criteria_id,title,created_at,updated_at) SELECT ?,org_id,id,owner_id,criteria_id,?,?,? FROM intake_sessions WHERE id=? AND org_id=? AND mutation_token=?',caseId,'Relato fictício para revisão',time,time,row.id,r.org.id,r.token),
     ]);
     if(!result[0].meta.changes) fail(409,'VERSION_CONFLICT','O atendimento mudou. Atualize antes de continuar.');
     await audit(r,'case.received',caseId).run();

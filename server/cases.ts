@@ -51,7 +51,7 @@ export async function caseApi(r:Runtime,path:string[],method:string,input:Record
     const args=[r.org.id,row.id,r.token];
     const result=await r.context.db.batch([
       stmt(r,'UPDATE cases SET mutation_token=? WHERE org_id=? AND id=? AND version=? AND lease_token IS NULL',r.token,r.org.id,row.id,row.version),
-      stmt(r,`DELETE FROM idempotency WHERE org_id=? AND (resource_id=? OR resource_id=?) AND key<>? AND ${guard}`,r.org.id,row.id,row.session_id,r.key,...args),
+      stmt(r,`DELETE FROM idempotency WHERE org_id=? AND (resource_id=? OR resource_id=?) AND (actor_id<>? OR key<>?) AND ${guard}`,r.org.id,row.id,row.session_id,r.actor.id,r.key,...args),
       stmt(r,`UPDATE ai_usage SET resource_id=NULL,operation_id=NULL WHERE org_id=? AND resource_id IN (?,?) AND ${guard}`,r.org.id,row.id,row.session_id,...args),
       stmt(r,`DELETE FROM ai_operations WHERE org_id=? AND resource_id IN (?,?) AND ${guard}`,r.org.id,row.id,row.session_id,...args),
       stmt(r,`UPDATE audit_events SET resource_id=NULL WHERE org_id=? AND resource_id IN (?,?) AND ${guard}`,r.org.id,row.id,row.session_id,...args),

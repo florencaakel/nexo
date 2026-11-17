@@ -21,8 +21,11 @@ npm test
 | Suite completa | PASS, 91/91, zero falhas, skips ou cancelamentos |
 | Rede durante motor e fluxo de regras | PASS: sentinela de `fetch` registrou zero chamadas |
 | Rota e dependências de código do processamento | PASS: somente `createRulesProvider`, sem caminho alcançável ao adaptador pago, endpoint OpenAI ou configuração de credencial |
+| Bundle atual, após build do coordenador | PASS: 68 arquivos JavaScript em `dist/server` e `dist/client` inspecionados por S5; motor `nexo-regras-v1` presente, endpoint/adaptador/variáveis de IA paga ausentes |
 
 A suite completa inclui 21 testes independentes deste escopo, cinco testes do servidor com regras, 17 testes gerais do servidor, 17 de segurança, três do auxiliar D1 e 28 do adaptador externo preservado. Esses últimos continuam usando transporte simulado e não tornam o adaptador externo parte do produto ativo.
+
+Na inspeção do bundle, nenhuma ocorrência foi encontrada para `https://api.openai.com/v1/responses`, `createOpenAIProvider`, `OPENAI_API_KEY`, `NEXO_AI_MODEL`, `NEXO_AI_APPROVED` ou `NEXO_MAX_BUDGET_USD`. O build foi executado pelo coordenador depois do ajuste `814f8ba`; S5 inspecionou os arquivos emitidos, sem executar outra compilação ou repetir a suite completa.
 
 ## Motor real, sem resposta simulada
 
@@ -60,7 +63,7 @@ Os testes do servidor também confirmaram que o histórico de contabilidade ante
 - Referência literal comprova origem do texto, não verdade dos acontecimentos. Não há inferência jurídica, classificação de mérito, prioridade clínica ou aconselhamento validado.
 - A seleção de trechos com identificadores é heurística; o original continua restrito. A demonstração deve usar somente dados fictícios.
 - A ausência de chamadas de IA paga está verificada no código ativo e nos testes executados. Isto não representa garantia de gratuidade da hospedagem ou de outros serviços: nenhuma contratação/publicação foi efetuada por S5.
-- Autenticação e persistência hospedadas, reconciliação com o repositório remoto, build final e testes de navegador pertencem às evidências do coordenador. S5 não operou o navegador nem o Site remoto nesta rodada.
+- Autenticação e persistência hospedadas, reconciliação com o repositório remoto e testes de navegador pertencem às evidências do coordenador. S5 inspecionou o bundle produzido pelo build do coordenador, mas não operou o navegador nem o Site remoto nesta rodada.
 - A retenção automática continua não implementada. O prazo configurado é uma política de exclusão manual; não afirmar limpeza automática.
 
 Conclusão: o fluxo local testado funciona com processamento determinístico, sem credencial, chamada ou cobrança de IA externa. Este relatório substitui os bloqueios de A2 do relatório prévio apenas para o escopo sem IA paga; não concede autorização de push, publicação ou atendimento real.

@@ -16,7 +16,8 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts tests/helpers/*.test.ts",
     "build:vercel": "vite build --config vite.browser.config.ts",
     "dev:vercel": "vite --config vite.browser.config.ts",
-    "preview:vercel": "vite preview --config vite.browser.config.ts"
+    "preview:vercel": "vite preview --config vite.browser.config.ts",
+    "package:vercel": "node scripts/package-vercel.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

@@ -1,153 +1,69 @@
 import { BROWSER_DEMO } from "@/lib/runtime-mode";
 import { LandingRuntime } from "@/components/nexo/landing-runtime";
+import { LandingFlow } from "@/components/nexo/landing-flow";
 
 export default function HomePage() {
-  return (<>
-    {["styles", "sections", "experience", "narrative", "motion", "hero-lab"].map(name => <link key={name} rel="stylesheet" href={`/site/${name}.css`} />)}
-
-  
-  <header className="site-header">
-    <div className="container header-inner">
-      <a className="wordmark" href="#inicio" aria-label="Nexo, início">Ne<span className="brand-x">x</span>o<span className="brand-dot">.</span></a>
-      <button className="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span>Menu</span><span className="menu-icon" aria-hidden="true"></span></button>
-      <nav id="main-nav" aria-label="Navegação principal">
-        <a href="#como-funciona">Como funciona</a><a href="#entrega">O que você recebe</a><a href="#diferenciais">Diferenciais</a><a href="#para-quem">Para quem</a><a href="#faq">FAQ</a><a href="/relato" className="nav-demo">Demonstração</a><a href="/painel">Painel</a>
-      </nav>
-    </div>
-  </header>
-  <main id="conteudo" tabIndex={-1}>
-    <section id="inicio" className="hero" aria-labelledby="hero-title">
-      <div className="container hero-grid">
-        <div className="hero-copy">
-          <p className="eyebrow"><span className="mini-x" aria-hidden="true">×</span> Entrevista guiada e revisão humana</p>
-          <h1 id="hero-title">Do primeiro relato à <em className="serif-emphasis">triagem organizada.</em></h1>
-          <p className="hero-description">{BROWSER_DEMO ? "Experimente uma entrevista guiada, organize uma ficha por regras e faça a revisão simulada. Tudo fica neste navegador, sem login e sem serviços externos de IA." : "A Nexo guia o relato com perguntas predefinidas e reúne trechos em uma ficha organizada por regras. Sua equipe confere as fontes e decide como seguir. Esta versão não usa serviços externos de IA."}</p>
-          <div className="button-group"><a className="button primary interactive-cta" href="/relato"><span className="cta-fill" aria-hidden="true"></span><span className="cta-label">Experimentar a demonstração</span><span className="cta-spark" aria-hidden="true">×</span></a><a className="button secondary" href="#como-funciona">Veja como funciona</a></div><p className="landing-demo-note">{BROWSER_DEMO ? "Demonstração pública, sem login · somente casos fictícios. Os registros ficam só neste navegador e são perdidos ao limpar seus dados." : "Ambiente restrito a testadores autorizados · somente casos fictícios."}</p>
+  return <>
+    {["styles", "sections", "narrative", "refinements"].map(name => <link key={name} rel="stylesheet" href={`/site/${name}.css`} />)}
+    <header className="site-header">
+      <div className="container header-inner">
+        <a className="wordmark" href="#inicio" aria-label="Nexo, início">Ne<span className="brand-x">x</span>o<span className="brand-dot">.</span></a>
+        <button className="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span>Menu</span><span className="menu-icon" aria-hidden="true" /></button>
+        <nav id="main-nav" aria-label="Navegação principal"><a href="#para-quem">Para quem</a><a href="#como-funciona">Como funciona</a><a href="#faq">Dúvidas</a><a href="/painel">Painel da demo</a><a href="/relato" className="nav-demo">Abrir aplicativo</a></nav>
+      </div>
+    </header>
+    <main id="conteudo" tabIndex={-1}>
+      <section id="inicio" className="hero nexo-hero" aria-labelledby="hero-title">
+        <div className="container hero-grid">
+          <div className="hero-copy">
+            <p className="hero-audience">Para escritórios que atendem demandas de consumo.</p>
+            <h1 id="hero-title">Mais tempo para ouvir.<br />Menos tempo para organizar.</h1>
+            <p className="hero-description">Cobranças, cancelamentos e problemas com produtos chegam em relatos soltos. O Nexo reúne as primeiras informações para o advogado começar a conversa com o caso em mãos.</p>
+            <div className="button-group"><a className="button primary" href="/relato">Experimentar o aplicativo</a><a className="button secondary" href="#como-funciona">Ver como funciona</a></div>
+            <p className="landing-demo-note">{BROWSER_DEMO ? "Demo sem login, apenas com situações fictícias." : "Demonstração com situações fictícias para testadores autorizados."}</p>
+          </div>
+          <LandingFlow />
         </div>
-        <div className="flow-visual" role="group" aria-label="Fluxo: Relato, Organização por regras, Ficha e Revisão humana">
-          <div className="visual-heading"><span>DA HISTÓRIA À CLAREZA</span><span className="visual-symbol" aria-hidden="true">×</span></div>
-          <div className="flow-caption" aria-hidden="true">
-            <span>Primeiro, a sua história.</span>
-            <span>Trechos reunidos por regras.</span>
-            <span>As fontes ficam disponíveis.</span>
-            <span>Agora, o olhar humano.</span>
+      </section>
+
+      <section id="para-quem" className="section narrative-section nexo-audience" aria-labelledby="audience-title">
+        <div className="container audience-grid">
+          <div className="audience-heading"><h2 id="audience-title">A mesma pergunta.<br />De novo. E de novo.</h2><p className="section-intro">Quando muitas demandas parecidas chegam ao escritório, a equipe repete a coleta de datas, cobranças, tentativas e documentos antes de conseguir avaliar cada história.</p></div>
+          <div className="audience-list">
+            <article><div><h3>O recorte inicial: consumo repetitivo</h3><p>Escritórios que atuam pelo consumidor em cobranças contestadas, cancelamentos e problemas com produtos ou serviços. Esse é o público e o fluxo que esta demonstração explora.</p></div></article>
+            <article><div><h3>O papel: apoio de secretaria e paralegal</h3><p>O Nexo prepara o material de entrada: recolhe o relato, organiza as informações e aponta o que precisa de uma conversa. A proposta é liberar tempo da equipe para ouvir e avaliar.</p></div></article>
+            <article><div><h3>O limite: a relação continua humana</h3><p>Atendimentos de família, situações sensíveis e casos em que a escuta é central pedem contato humano desde o início. Eles não são o foco desta versão.</p></div></article>
           </div>
-          <div className="flow-canvas">
-            <div className="flow-story flow-scene">
-              <div className="story-paper">
-                <div className="story-topline"><span className="flow-label">O ponto de partida</span><span className="story-quote" aria-hidden="true">“</span></div>
-                <blockquote>“Não sei por onde começar.”</blockquote>
-                <div className="story-voice" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-              </div>
-              <div className="story-fragments" aria-hidden="true"><span>Um relato</span><span>Datas soltas</span><span>Dúvidas</span></div>
-            </div>
-            <div className="flow-record flow-scene">
-              <p className="flow-label">Trechos com referências</p>
-              <div className="flow-sheets">
-                <dl className="flow-details">
-                  <div><dt><span aria-hidden="true">01</span> Contexto</dt><dd>Trechos do relato</dd></div>
-                  <div><dt><span aria-hidden="true">02</span> Referências</dt><dd>Datas e documentos</dd></div>
-                  <div><dt><span aria-hidden="true">03</span> Pendências</dt><dd>Pontos a esclarecer</dd></div>
-                </dl>
-                <div className="flow-scan" aria-hidden="true"><span>FICHA POR REGRAS</span></div>
-              </div>
-              <p className="analysis-note"><span aria-hidden="true">↳</span> Campos para conferência humana</p>
-            </div>
-            <div className="review-handoff flow-scene">
-              <div className="handoff-document" aria-hidden="true"><span>RELATO ORGANIZADO</span><span className="handoff-symbol">×</span><i></i><i></i><i></i></div>
-              <div className="handoff-connector" aria-hidden="true"><span></span></div>
-              <div className="review-person">
-                <span className="review-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4"><circle cx="12" cy="8" r="3.3"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><span className="review-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.7"><path d="m3 8 3 3 7-7"/></svg></span></span>
-                <strong>Preparado para revisão</strong><span>O próximo passo é humano.</span>
-              </div>
-            </div>
-          </div>
-          <ol className="hero-flow">
-            <li><span className="stage-progress" aria-hidden="true"></span><span className="flow-node" aria-hidden="true">01</span><strong>Relato</strong></li>
-            <li><span className="stage-progress" aria-hidden="true"></span><span className="flow-node" aria-hidden="true">02</span><strong>Organização</strong></li>
-            <li><span className="stage-progress" aria-hidden="true"></span><span className="flow-node" aria-hidden="true">03</span><strong>Ficha</strong></li>
-            <li><span className="stage-progress" aria-hidden="true"></span><span className="flow-node" aria-hidden="true">04</span><strong>Revisão humana</strong></li>
+        </div>
+      </section>
+
+      <section id="como-funciona" className="section narrative-section" aria-labelledby="how-title">
+        <div className="container">
+          <div className="section-head"><h2 id="how-title">Antes da conversa,<br />o caso começa a tomar forma.</h2><p className="section-intro">A pessoa pode falar ou escrever. O relato continua disponível, junto da ficha, para quem vai atendê-la.</p></div>
+          <ol className="steps-grid">
+            <li><span className="step-number">1</span><h3>Conte o que aconteceu</h3><p>Escreva ou use o ditado por voz em um navegador compatível. Confira o texto antes de salvar; não é preciso conhecer termos jurídicos.</p></li>
+            <li><span className="step-number">2</span><h3>Complete o que souber</h3><p>Perguntas curtas ajudam a lembrar datas, tentativas e registros. “Não sei” também é uma resposta; a pessoa pode encerrar o roteiro.</p></li>
+            <li><span className="step-number">3</span><h3>Veja o próximo passo</h3><p>Escolhas explícitas sobre o assunto e a necessidade de ajuda geram uma indicação de encaminhamento. Nenhuma regra decide se há direito ou se cabe uma ação.</p></li>
+            <li><span className="step-number">4</span><h3>Uma pessoa confere</h3><p>Relato original, trechos e pendências ficam juntos. Quem revisa pode corrigir a ficha, pedir informações e registrar uma decisão de atendimento.</p></li>
           </ol>
-          <div className="visual-footer"><p className="visual-footnote">Tecnologia conecta. Pessoas decidem.</p><button className="flow-toggle" type="button" aria-label="Pausar animação do fluxo" aria-pressed="false" hidden>Pausar</button></div>
+          <div className="human-handoff"><h3>O primeiro atendimento não precisa começar do zero.</h3><p>A ferramenta prepara a conversa. O advogado ou a equipe de atendimento acolhe, esclarece e decide como seguir. Nesta demo, você experimenta os dois papéis; nenhum relato é enviado a um escritório.</p><a className="text-link" href="/relato?exemplo=cancelamento">Abrir o exemplo de cancelamento no aplicativo</a></div>
         </div>
-      </div>
-      <div className="container hero-baseline"><span>Entrevista guiada e revisão humana</span><span>Histórias no centro. Revisão humana no processo.</span></div>
-    </section>
-    <section id="como-funciona" className="section narrative-section" aria-labelledby="how-title">
-      <div className="container">
-        <p className="eyebrow"><span className="section-index">01</span> Como funciona</p>
-        <div className="section-head"><h2 id="how-title">A pessoa conta.<br />A Nexo organiza.<br />{BROWSER_DEMO ? "Você simula a revisão." : "Sua equipe avalia."}</h2><p className="section-intro">{BROWSER_DEMO ? "Nesta demonstração, você experimenta todos os papéis no mesmo navegador. Nenhum relato é encaminhado a uma equipe." : "Do primeiro contato à revisão profissional, cada etapa tem uma função clara."}</p></div>
-        <ol className="steps-grid">
-          <li><span className="step-number">01</span><span className="step-owner">{BROWSER_DEMO ? "VOCÊ COMO PARTICIPANTE" : "QUEM BUSCA ATENDIMENTO"}</span><h3>Relata o problema</h3><p>A pessoa explica o que aconteceu em uma entrevista guiada, com linguagem simples, sem precisar conhecer termos jurídicos.</p></li>
-          <li><span className="step-number">02</span><span className="step-owner">A NEXO</span><h3>Organiza o caso</h3><p>Regras simples selecionam trechos literais e mantêm as referências ao relato. As perguntas são predefinidas; não há interpretação jurídica automática.</p></li>
-          <li><span className="step-number">03</span><span className="step-owner">OS CRITÉRIOS DA ORGANIZAÇÃO</span><h3>Orienta a triagem</h3><p>O recorte de consumidor orienta a revisão: cobrança contestada, cancelamento e problemas com produtos ou serviços. Quem revisa avalia a compatibilidade do caso.</p></li>
-          <li><span className="step-number">04</span><span className="step-owner">{BROWSER_DEMO ? "VOCÊ COMO REVISOR" : "SUA EQUIPE"}</span><h3>Revisa e decide</h3><p>{BROWSER_DEMO ? "Na simulação, você confere o relato e a ficha, registra correções e escolhe um próximo passo fictício. Não há avaliação profissional nem encaminhamento real." : "Uma pessoa qualificada confere o relato e a ficha e define se é preciso pedir informações, seguir com o atendimento ou avaliar um encaminhamento."}</p></li>
-        </ol>
-        <p className="section-footnote">{BROWSER_DEMO ? "Os relatos, as fichas e as decisões desta simulação ficam só neste navegador e dispositivo. Não há atendimento nem compartilhamento com uma equipe." : "O resultado é uma base organizada para análise. A decisão sobre o atendimento continua com a equipe."}</p>
-      </div>
-    </section>
-    <section id="entrega" className="section narrative-section output-section" aria-labelledby="output-title">
-      <div className="container">
-        <p className="eyebrow"><span className="section-index">02</span> {BROWSER_DEMO ? "A ficha da simulação" : "O que sua equipe recebe"}</p>
-        <div className="section-head"><h2 id="output-title">Um caso organizado.<br />Pronto para revisar.</h2><p className="section-intro">A ficha mantém os trechos de origem ao lado dos campos que a equipe precisa conferir.</p></div>
-        <div className="example-layout">
-          <article className="input-story"><span className="step-owner">{BROWSER_DEMO ? "O RELATO FICTÍCIO" : "O RELATO RECEBIDO"}</span><blockquote>“Cancelei um serviço fictício no dia 3 de outubro, mas recebi outra cobrança de R$ 89 no dia 20. Tenho o e-mail de confirmação e ainda não consegui resolver.”</blockquote><p>Exemplo fictício · Consumidor · Ficha ilustrativa</p></article>
-          <article className="output-sheet"><div className="sheet-heading"><span>FICHA ILUSTRATIVA</span><span className="sheet-mark" aria-hidden="true">×</span></div><h3>Trechos para conferir</h3><dl>
-            <div><dt>Trecho do relato</dt><dd>“Cancelei um serviço fictício no dia 3 de outubro, mas recebi outra cobrança de R$ 89 no dia 20.”</dd></div>
-            <div><dt>Datas mencionadas</dt><dd>“no dia 3 de outubro” · “no dia 20”. O ano precisa de conferência humana.</dd></div>
-            <div><dt>Documento mencionado</dt><dd>“Tenho o e-mail de confirmação”. Trecho do relato; nenhum documento foi recebido ou analisado.</dd></div>
-            <div><dt>Campos para revisão</dt><dd>Ano das datas, situação da cobrança e tentativas de solução.</dd></div>
-          </dl><div className="sheet-status">{BROWSER_DEMO ? "Pronto para sua revisão simulada" : "Aguardando revisão humana"}</div></article>
-        </div>
-        <p className="section-footnote">Exemplo ilustrativo com trechos literais do relato fictício. Regras não compreendem o contexto completo: a equipe precisa conferir a organização e as lacunas.</p>
-      </div>
-    </section>
-    <section id="diferenciais" className="section narrative-section" aria-labelledby="dif-title">
-      <div className="container">
-        <p className="eyebrow"><span className="section-index">03</span> Diferenciais</p>
-        <div className="section-head"><h2 id="dif-title">Feita para o trabalho<br />de triagem jurídica.</h2><p className="section-intro">Um fluxo que ajuda quem relata a explicar o problema e quem atende a compreender o caso.</p></div>
-        <div className="benefits-grid">
-          <article><span>01 / ACOLHIMENTO</span><h3>Linguagem acessível</h3><p>A entrevista parte do que aconteceu. A pessoa não precisa saber a área do Direito ou formular uma pergunta técnica.</p></article>
-          <article><span>02 / CONSISTÊNCIA</span><h3>Informações padronizadas</h3><p>Trechos, referências e campos de conferência ficam em uma estrutura comum, preservando o texto original para revisão.</p></article>
-          <article><span>03 / CONTEXTO</span><h3>Critérios da sua organização</h3><p>Critérios versionados ficam disponíveis ao lado do caso para orientar a equipe. A compatibilidade com o atendimento depende de avaliação humana.</p></article>
-          <article><span>04 / RESPONSABILIDADE</span><h3>Revisão humana no fluxo</h3><p>A equipe verifica o que as regras organizaram, registra correções e decide o próximo passo. A ficha original permanece preservada.</p></article>
-        </div>
-      </div>
-    </section>
-    <section id="para-quem" className="section audience" aria-labelledby="audience-title">
-      <div className="container audience-grid">
-        <div className="audience-heading"><p className="eyebrow"><span className="section-index">04</span> Para quem</p><h2 id="audience-title">Para equipes que recebem demandas jurídicas.</h2><p className="section-intro">Da triagem em escritórios ao atendimento social, a proposta é preparar as informações para quem vai analisar o caso.</p></div>
-        <div className="audience-list">
-          <article><span className="audience-number" aria-hidden="true">01</span><div><h3>Escritórios de advocacia</h3><p>Apoiar a triagem inicial com relatos estruturados e pendências identificadas, conforme as áreas e os critérios do escritório.</p></div></article>
-          <article><span className="audience-number" aria-hidden="true">02</span><div><h3>Clínicas e núcleos jurídicos</h3><p>Preparar informações para a análise supervisionada de equipes e estudantes, inclusive em universidades com atendimento jurídico.</p></div></article>
-          <article><span className="audience-number" aria-hidden="true">03</span><div><h3>ONGs e organizações sociais</h3><p>Organizar demandas recebidas e possíveis encaminhamentos, respeitando o escopo e a capacidade de atendimento da organização.</p></div></article>
-          <article><span className="audience-number" aria-hidden="true">04</span><div><h3>Projetos e profissionais pro bono</h3><p>Reduzir o trabalho inicial de organização dos relatos para preparar uma revisão compatível com o tempo e as áreas disponíveis.</p></div></article>
-        </div>
-      </div>
-    </section>
-    <section id="contato" className="section narrative-section contact-section" aria-labelledby="contact-title">
-      <div className="container contact-layout"><div><p className="eyebrow"><span className="section-index">05</span> Contato</p><h2 id="contact-title">Como a Nexo pode apoiar a sua equipe?</h2><p className="contact-description">Queremos entender como sua organização recebe demandas e onde a triagem precisa melhorar.</p></div><div className="contact-note"><span className="step-owner">PRODUTO EM DESENVOLVIMENTO</span><h3>Estamos construindo a Nexo.</h3><p>{BROWSER_DEMO ? "Conheça o fluxo na demonstração pública, sem login. Você salva os dados no próprio navegador e simula a revisão. Não há atendimento jurídico real nem envio dos relatos para a equipe." : "Você pode conhecer o fluxo na demonstração restrita a testadores autorizados. Não há atendimento jurídico real. O canal para conversar com a equipe será disponibilizado aqui."}</p><span className="contact-status">Contato em breve</span></div></div>
-    </section>
-    <section id="faq" className="section narrative-section faq-section" aria-labelledby="faq-title">
-      <div className="container faq-layout"><div><p className="eyebrow"><span className="section-index">06</span> Perguntas frequentes</p><h2 id="faq-title">Antes de começar.</h2><p className="section-intro">Entenda o papel da Nexo e os limites da organização por regras.</p></div><div className="faq-list">
-        <details><summary>A Nexo substitui um advogado?</summary><p>Não. A Nexo apoia a coleta e a organização das informações. A avaliação jurídica e as decisões sobre o caso exigem revisão de uma pessoa qualificada.</p></details>
-        <details><summary>Esta versão usa IA?</summary><p>Não. A entrevista usa perguntas predefinidas e regras simples para reunir trechos do relato. Não há chamadas a serviços externos nem cobrança por IA. As regras não substituem a leitura e a avaliação humana.</p></details>
-        <details><summary>Quais critérios orientam a triagem?</summary><p>A demonstração usa critérios versionados de consumidor: cobrança contestada, cancelamento e problemas com produtos ou serviços. Não aplica critérios de renda ou localização.</p></details>
-        <details><summary>A pessoa precisa ter todos os documentos?</summary><p>O relato é o ponto de partida. A ficha pode destacar trechos que mencionam documentos, mas não recebe nem analisa arquivos. A equipe confere o contexto e pede o que falta.</p></details>
-        <details><summary>A Nexo também serve para atendimento pro bono?</summary><p>Sim, essa é uma aplicação prevista. O fluxo pode apoiar projetos e organizações que oferecem atendimento gratuito. A aceitação de cada demanda depende dos critérios e da disponibilidade da equipe.</p></details>
-        <details id="responsabilidade"><summary>Como os dados pessoais serão tratados?</summary><p>{BROWSER_DEMO ? "Use somente dados fictícios. Relatos e decisões ficam no armazenamento deste navegador, sem login nem contas separadas. Quem usar o mesmo navegador poderá vê-los. Limpar os dados do navegador remove os registros; não há cópia sincronizada." : "Esta demonstração aceita somente dados fictícios. Não informe CPF, dados bancários, endereço completo nem relatos reais. O acesso é restrito; os registros de teste são salvos para revisão e podem ser excluídos pelo administrador."}</p></details>
-        <details><summary>A plataforma já está disponível?</summary><p>{BROWSER_DEMO ? "Você pode experimentar esta demonstração sem criar uma conta. Salve um caso fictício, organize a ficha e faça a revisão simulada no mesmo navegador. A Nexo está em desenvolvimento e não oferece atendimento jurídico real nesta versão." : "A Nexo está em desenvolvimento. Testadores autorizados podem salvar casos fictícios, organizar uma ficha por regras e registrar a revisão humana. A demonstração não é um canal de atendimento jurídico real."}</p></details>
-        {BROWSER_DEMO && <details><summary>Posso abrir os casos em outro dispositivo?</summary><p>Não. O link de um caso ou rascunho só funciona no mesmo navegador e dispositivo em que foi salvo. Não existe sincronização. Os rascunhos também expiram no horário informado na entrevista.</p></details>}
-      </div></div>
-    </section>
-  </main>
-  <footer id="rodape" className="site-footer">
-    <div className="container">
-      <div className="footer-top"><a className="wordmark" href="#inicio" aria-label="Nexo, voltar ao início">Ne<span className="brand-x">x</span>o<span className="brand-dot">.</span></a><nav aria-label="Navegação do rodapé"><a href="#como-funciona">Como funciona</a><a href="#entrega">O que você recebe</a><a href="#diferenciais">Diferenciais</a><a href="#para-quem">Para quem</a><a href="#contato">Contato</a><a href="#faq">FAQ</a></nav></div>
-      <div className="footer-bottom"><p>Produto em desenvolvimento.</p><p>A Nexo não substitui avaliação jurídica profissional.</p></div>
-    </div>
-  </footer>
+      </section>
 
-<LandingRuntime />
-</>);
+      <section id="faq" className="section narrative-section faq-section" aria-labelledby="faq-title">
+        <div className="container faq-layout"><div><h2 id="faq-title">O que esperar do Nexo.</h2><p className="section-intro">Um apoio para o trabalho inicial, com limites visíveis para quem conta e para quem revisa.</p></div><div className="faq-list">
+          <details open><summary>A pessoa deixa de conversar com um advogado?</summary><p>A proposta é que a conversa humana aconteça com as informações iniciais organizadas. O Nexo não oferece consulta nem substitui a escuta. A pessoa pode indicar que precisa de contato humano, e essa indicação acompanha o relato para revisão.</p></details>
+          <details><summary>O Nexo diz se o caso pode ir para o jurídico?</summary><p>Ele sugere um próximo passo com base nas opções que a pessoa confirma: avaliação jurídica de consumo, conversa para esclarecer, outra especialidade ou informação inicial. Isso não é um parecer sobre o direito ou sobre a chance de ganhar uma ação. A decisão de atender é humana.</p></details>
+          <details><summary>Como funciona a opção de voz?</summary><p>Em navegadores compatíveis, o ditado transforma a fala em texto para conferência. O fornecedor do navegador pode processar o áudio; por isso a opção pede ciência antes de começar. O Nexo salva apenas o texto confirmado. Digitar continua disponível.</p></details>
+          <details><summary>Preciso contratar uma IA para testar?</summary><p>Não. A entrevista, a ficha e a indicação de encaminhamento usam regras do aplicativo, sem API de IA paga. O ditado opcional depende do recurso oferecido pelo navegador e pode precisar de conexão.</p></details>
+          <details><summary>Onde ficam os relatos da demonstração?</summary><p>{BROWSER_DEMO ? "O texto e as decisões ficam apenas neste navegador e dispositivo. Não há conta, envio à equipe, sincronização ou cópia remota. Quem usa o mesmo perfil de navegador pode vê-los. Limpar os dados do site apaga os registros. Use somente situações fictícias." : "Esta é uma demonstração restrita a testadores autorizados e aceita apenas situações fictícias. Os registros são salvos para revisão. Não informe dados de pessoas reais."}</p></details>
+          <details><summary>Preciso enviar documentos?</summary><p>Não. Você pode mencionar um e-mail ou comprovante, mas esta versão não recebe nem analisa documentos. A ficha diferencia o que foi relatado do que ainda precisa de conferência.</p></details>
+        </div></div>
+      </section>
+
+      <section id="demonstracao" className="section contact-section nexo-closing" aria-labelledby="demo-title"><div className="container"><div><h2 id="demo-title">Estamos construindo o Nexo.</h2><p>Experimente um caso fictício do primeiro relato à revisão. O aplicativo está logo aqui.</p></div><a className="button primary" href="/relato">Abrir aplicativo</a></div></section>
+    </main>
+    <footer className="site-footer"><div className="container"><div className="footer-top"><a className="wordmark" href="#inicio" aria-label="Nexo, voltar ao início">Ne<span className="brand-x">x</span>o<span className="brand-dot">.</span></a><nav aria-label="Navegação do rodapé"><a href="#para-quem">Para quem</a><a href="#como-funciona">Como funciona</a><a href="/relato">Aplicativo</a><a href="/painel">Painel da demo</a></nav></div><div className="footer-bottom"><p>Demonstração em desenvolvimento.</p><p>Não oferece atendimento jurídico real.</p></div></div></footer>
+    <LandingRuntime />
+  </>;
 }

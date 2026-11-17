@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "Nexo | Triagem jurídica assistida por IA", template: "%s | Nexo" },
-  description: "Histórias compreendidas. Informações organizadas. Demonstração de triagem jurídica com casos fictícios e revisão humana.",
+  title: { default: "Nexo | Entrevista guiada e revisão humana", template: "%s | Nexo" },
+  description: "Relatos organizados por regras, com referências ao texto original. Demonstração com casos fictícios, entrevista guiada e revisão humana.",
   icons: {
     icon: "/site/favicon.svg",
     shortcut: "/site/favicon.svg",

@@ -1,51 +1,72 @@
-# Nexo — operação e retomada
+# Nexo — operação e retomada local
 
-Estado: rascunho T00. Hoje existe somente a apresentação estática; instruções do futuro aplicativo serão completadas após implementação e teste.
+Atualizado em 17/11/2026. Desenvolvimento pré-A2; nenhuma chamada paga, sincronização remota ou publicação nesta etapa.
 
-## Estado a preservar
+## Projeto e aprovações
 
-- Projeto: `appgprj_6ac5417ab1088191936830568f12e4a8`.
-- Site: https://nexo-triagem-juridica.insper-1495.chatgpt.site.
-- Publicação atual: versão 2, commit `6e1e3486dfac3d4efb8c8ba7dabfa047f85926d6`.
-- Base do código auditado: `4e49b32625526103f228ffd51b1fecf44835280f`, com robots/sitemap ainda não publicados.
-- Registros desta pasta são auditoria/planejamento, não uma nova versão publicada.
+Site preservado: `appgprj_6ac5417ab1088191936830568f12e4a8`, https://nexo-triagem-juridica.insper-1495.chatgpt.site, versão 2 conhecida. A1 autoriza os módulos e testes locais. [A2](A2-PROPOSTA.md) propõe IA e orçamento; A3 autoriza uma publicação concreta. Push, PR, merge e deploy precisam de confirmação específica da Florença. Não criar outro Site.
 
-Para retomar, consultar Site, versão e código atuais; ler APPROVALS e TASKS. Não criar outro Site nem seguir a instrução legada de recriação presente no pacote original. Não descartar alterações locais ou reescrever histórico para obter árvore limpa.
+Nesta sessão, get_site retornou metadados v2, mas credencial do repositório falhou com “Sites project not found”. A cópia local vem do pacote em Downloads e foi preservada numa branch. Antes de sincronizar, obter acesso autorizado e comparar com o código remoto sem sobrescrever mudanças posteriores.
 
-## Verificações atuais reproduzíveis
+## Preparação
 
-No checkout autorizado, com as dependências existentes:
+Node 24, dependências do package-lock. Não abrir arquivos `.env` ou variantes. Nenhuma credencial é necessária para os testes locais.
 
 ```sh
-npm run check
+npm ci
+npm run check -- --incremental false
+npm test
 npm run build
-git diff --exit-code -- dist
+npm run dev
 ```
 
-O build recria `dist/`; verificar o estado antes de executar. Não usar a antiga suite visual como aceite da página atual. A prévia deve seguir o mecanismo suportado pelo ambiente; não iniciar servidores paralelos para contornar uma limitação da prévia.
+O servidor imprime a URL (porta inicial 5173). O build gera Worker em `dist/server/index.js`. Os arquivos estáticos históricos de `src/` e os relatórios em `qa/` não representam a aplicação atual.
 
-## Próxima etapa
+O starter oferece login fictício oficial apenas na prévia local, restrito a loopback. A identidade local é `local_seedy`. A configuração `.dev.vars` criada nesta sessão é ignorada pelo Git e contém somente bootstrap dessa identidade, aprovação de IA falsa e orçamento zero. Ela não é credencial hospedada e não deve ser transferida para produção. Em outra máquina, criar configuração local equivalente explicitamente; nunca usar o primeiro visitante como administrador.
 
-Aguardar A1. Depois: concluir contratos, preparar estrutura Worker separadamente, portar a apresentação e adicionar os módulos sem perder o endereço, o público institucional e a marca.
+## Migrações locais
 
-Após preparar o adaptador, solicitar A2 com modelo, limites e orçamento. Não pedir chave no chat. Credencial de API somente em configuração protegida; não gravar valor no repositório, relatório, frontend ou manifesto. Não conceder acesso administrativo pelo primeiro login. A conta da usuária só será associada após verificação de identidade do Site.
+Antes de aplicar, conferir a existência das tabelas no banco local e o histórico conhecido. A migração inicial já foi aplicada nesta workspace em 17/11/2026. Não repeti-la no mesmo banco.
 
-## Operação pretendida da demonstração
+```sh
+node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --command "SELECT name FROM sqlite_master WHERE type='table'"
+```
 
-- Usar exclusivamente casos fictícios e aviso permanente de demonstração.
-- Definir antes da abertura hospedada: lista de acesso, prazo de retenção dos testes e ação de apagar/reiniciar casos sintéticos.
-- Interromper novas entrevistas/chamadas pelo controle administrativo; manter leitura autorizada dos registros.
-- Em falha da IA, preservar o relato e mostrar estado de falha/pendência; retomar com trava e orçamento disponível.
-- Nunca executar automaticamente decisão jurídica ou envio externo.
+Somente se a migração inicial ainda não tiver sido aplicada e as tabelas não existirem:
 
-Esses controles ainda não existem. Os comandos e telas efetivos serão registrados quando implementados.
+```sh
+node --import ./scripts/sites-env.mjs ./node_modules/wrangler/bin/wrangler.js d1 execute DB --local --config dist/server/wrangler.json --persist-to .wrangler/state --file drizzle/0000_perfect_khan.sql
+```
 
-## Publicação e recuperação
+Isso não aplica migrações hospedadas. Não alterar SQL histórico aplicado; mudanças futuras usam novas migrações.
 
-Antes de A3, apresentar candidato, testes, eventuais limites, custo observado e exato público de cada rota. Incluir as pendências de robots/sitemap explicitamente. Publicar somente o artefato correspondente ao código validado.
+## Testar sem IA paga
 
-Planejar migrações aditivas e versionadas. Reversão de código não desfaz migração; confirmar estado de dados antes de qualquer recuperação. Definir cópia/exportação e restauração conforme os recursos realmente disponíveis. Até essa validação, não afirmar que há backup ou plano de restauração executado.
+1. Abrir `/relato` e entrar pelo login da prévia local.
+2. Iniciar relato fictício, escrever, salvar e conferir as respostas.
+3. Confirmar que todos os dados são fictícios e enviar. Guardar o link da sessão; o identificador do caso aparece somente após persistência.
+4. Abrir `/painel`, filtrar os casos e abrir o caso salvo. Conferir o relato original. Sem IA configurada, a tela informa ausência de ficha; não há resposta fixa no produto.
+5. Registrar decisão humana com notas. Sem ficha, a revisão é apenas do relato original; uma ficha real poderá ser revisada após A2. A decisão e seu autor/horário ficam no histórico.
+6. Recarregar e verificar a persistência. Testadores não recebem ficha nem notas internas na sessão/recibo.
+7. Em `/painel/configuracoes`, pausar novos relatos, editar critérios (nova versão), gerenciar associações explícitas e consultar consumo.
 
-Se for necessário hospedar para validar identidade/IA antes da publicação final, pedir autorização limitada de teste no mesmo Site, com escopo e acesso definidos. Não criar ambiente público adicional sem autorização.
+As sessões expiram após 24 horas. A política de retenção configurável não é um serviço automático de expurgo: a exclusão de caso sintético é manual pelo administrador; agendamento hospedado permanece pendente. A exclusão remove conteúdo e caches correlatos, preservando contabilidade sem relato para não zerar orçamento. Não apagar dados do usuário sem a confirmação aplicável.
 
-Não executar T13 nem solicitar A4 nesta entrega: a usuária definiu finalidade exclusivamente demonstrativa.
+## Falhas e concorrência
+
+- Uma ação usa chave de idempotência. Em erro de rede, consultar estado salvo antes de repetir; a interface preserva a chave da mesma ação enquanto montada.
+- Correções e decisões exigem a versão observada. Conflitos não sobrescrevem outra revisão; atualizar e conferir antes de reenviar.
+- O relato é salvo antes da análise final. Análise é ação explícita e só pode ocorrer com aprovação, configuração, acesso e orçamento.
+- Reserva é atômica. Timeout/falha incerta consome conservadoramente o teto reservado. Nenhuma repetição automática; até três tentativas por operação lógica.
+- Interrupção de processo preserva relato e reserva; recuperação de lease vencido deve atualizar o estado sem acionar IA. Não interpretar reserva como chamada gratuita nem zerar contabilidade para permitir novas tentativas.
+- Pausar coleta e IA mantém leitura autorizada dos registros.
+
+## Depois de A2 e antes de A3
+
+Instalar OpenAI Developers e seguir o fluxo protegido exigido pela skill de Sites. Não copiar chave para chat, arquivo versionado, frontend ou relatório. Configurar o modelo e preços aprovados no servidor, com teto inicialmente US$ 10 se essa proposta for aprovada. A proposta completa define fase de demonstração e teto global.
+
+Executar os 12 casos da rubrica com modelo real; guardar resultados e consumo sem tratar mocks como avaliação. Confirmar identidade hospedada, associação do administrador por ID verificado, ausência de acesso indevido e persistência D1. A prévia local não comprova esses itens.
+
+Não há backup hospedado validado nem migração remota nesta entrega. Antes de A3, reconciliar o repositório, confirmar custo de hospedagem, preparar cópia de segurança quando aplicável e plano de recuperação. Reverter código não desfaz banco. O sitemap contém apenas a apresentação; rotas de operação têm noindex e não devem ser indexadas.
+
+Dados reais e piloto real continuam fora do escopo. O aplicativo não é parecer jurídico e não decide atendimento automaticamente.

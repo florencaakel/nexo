@@ -27,11 +27,11 @@ Identidade vem do mecanismo oficial da plataforma; papel e organização vêm do
 | GET /api/cases/:id | Revisor/administrador | Original, ficha, revisões e versões permitidos |
 | POST /api/cases/:id/reviews | Revisor/administrador | Correção e decisão humanas, com versão esperada e autor do servidor |
 | GET/PATCH /api/admin/settings | Administrador | Pausa de coleta/IA e limites; coleta real não habilitável pela demo |
-| GET/POST/PATCH /api/admin/memberships | Administrador | Lista e alteração controlada de associações |
+| GET/PUT /api/admin/memberships | Administrador | Lista e alteração controlada de associações |
 | GET/POST /api/admin/criteria | Administrador | Consulta/criação de versões de critérios |
 | GET /api/admin/usage | Administrador | Uso e reserva de orçamento sem relatos nos logs |
 
-Os caminhos e DTOs finais serão definidos em T01. Não expor as mesmas respostas do painel ao participante. Rotas sensíveis devem evitar cache público; gravações devem validar origem/CSRF conforme o mecanismo utilizado.
+Os caminhos e DTOs estão definidos em lib/contracts.ts e implementados localmente. Não expor as mesmas respostas do painel ao participante. Rotas sensíveis devem evitar cache público; gravações devem validar origem/CSRF conforme o mecanismo utilizado.
 
 ## Regras comuns
 
@@ -71,3 +71,9 @@ Fixtures sintéticas serão específicas para avaliação, com expectativas ante
 - Escritas exigem JSON, Origin igual ao destino, X-Nexo-Request:1 e Idempotency-Key persistente durante repetição.
 - AiProvider executa uma chamada por operação, sem retry oculto. Reserva de orçamento ocorre no servidor. Metadados usageEstimated distinguem medição de estimativa.
 - Identidade local de testes e provider fake existem apenas em arquivos de testes; não haverá backdoor de autenticação ou mock de IA no produto.
+
+## Implementação local em 17/11/2026
+
+POST /api/intake-sessions/:id/messages acrescenta resposta; PUT corrige respostas antes do envio. POST submit retorna SessionDTO com recibo, sem chamar IA. POST cases/:id/analysis processa separadamente e retorna caseId/status. POST reviews retorna CaseDetailDTO e admite decisão humana com correctedAnalysis:null, inclusive sem ficha de IA; o original permanece intacto. GET admin/criteria retorna CriteriaDTO diretamente. DELETE cases/:id exige administrador, expectedVersion, origem e idempotência.
+
+O orçamento é expresso em microdólares (1 USD = 1.000.000). Falhas incertas retêm o custo máximo conservador; não há repetição automática. retentionDays registra política, sem expurgo agendado implementado nesta etapa. Testes simulados não substituem QA hospedado ou avaliação do modelo real.

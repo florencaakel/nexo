@@ -351,3 +351,8 @@ body {
 .nx-referral-receipt { text-align:left; margin-block:24px; padding:24px; background:#f4f7fd; border-left:3px solid #f47721; }
 .nx-referral-receipt p { margin-block:18px; font-size:.93rem; }
 @media(max-width:600px) { .nx-referral { padding:22px 16px; } .nx-referral-receipt { padding:18px; } }
+
+.nx-voice-input { padding:20px; background:#f4f7fd; border:1px solid #d7e1ef; border-radius:8px; }
+.nx-voice-input .nx-check { margin-block:16px; }
+.nx-voice-input .nx-actions { margin-block:14px; }
+.nx-voice-input .nx-notice { margin-top:18px; }

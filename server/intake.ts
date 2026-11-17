@@ -54,7 +54,7 @@ export async function intake(r: Runtime, path: string[], method: string, input: 
     const total=users.reduce((sum,m)=>sum+(values.get(m.id)??m.content).length,0);
     if(total>MAX_PARTICIPANT_CHARS) fail(400,'TEXT_LIMIT','O relato completo pode ter até 10.000 caracteres.');
     const result=await r.context.db.batch([
-      stmt(r,'UPDATE intake_sessions SET participant_chars=?,version=version+1,mutation_token=?,updated_at=? WHERE org_id=? AND id=? AND owner_id=? AND version=? AND state=\'draft\' AND lease_token IS NULL',total,r.token,time,r.org.id,row.id,r.actor.id,expected),
+      stmt(r,'UPDATE intake_sessions SET participant_chars=?,version=version+1,mutation_token=?,question_ready=0,updated_at=? WHERE org_id=? AND id=? AND owner_id=? AND version=? AND state=\'draft\' AND lease_token IS NULL',total,r.token,time,r.org.id,row.id,r.actor.id,expected),
       ...[...values].map(([id,content])=>stmt(r,'UPDATE messages SET content=? WHERE org_id=? AND session_id=? AND id=? AND role=\'user\' AND EXISTS (SELECT 1 FROM intake_sessions WHERE id=? AND org_id=? AND mutation_token=?)',content,r.org.id,row.id,id,row.id,r.org.id,r.token)),
     ]);
     if(!result[0].meta.changes) fail(409,'VERSION_CONFLICT','O atendimento mudou. Atualize antes de continuar.');

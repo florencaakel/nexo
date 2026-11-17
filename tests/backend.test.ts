@@ -144,3 +144,46 @@ test('sessão expirada bloqueia alterações; visitante inicial não ganha papel
   const draft=await h.draft();await h.context.db.prepare('UPDATE intake_sessions SET expires_at=? WHERE id=?').bind('2000-01-01T00:00:00.000Z',draft.id).run();
   assert.equal((await h.call(`intake-sessions/${draft.id}`)).status,410);
 });
+
+test('corrigir relato reabre perguntas quando a etapa estava pronta',async t=>{
+  const h=await setup(t);await h.configure();const draft=await h.draft();
+  h.provider.question=async()=>result({question:null,ready:true,reason:'Informações suficientes para o teste.'});
+  const ready=(await h.call<SessionDTO>(`intake-sessions/${draft.id}/next-question`,'POST',{expectedVersion:draft.version})).data;assert.equal(ready.canAsk,false);
+  const edited=(await h.call<SessionDTO>(`intake-sessions/${draft.id}/messages`,'PUT',{expectedVersion:ready.version,answers:[{id:ready.messages[0].id,content:'A cobrança fictícia foi diferente do que eu relatei.'}]})).data;
+  assert.equal(edited.canAsk,true);
+});
+
+test('lease interrompido converte reserva em custo incerto e permite só retomada explícita',async t=>{
+  const h=await setup(t);await h.configure();const sent=await h.submit();const id=sent.receipt!.caseId;const time='2000-01-01T00:00:00.000Z';
+  await h.context.db.batch([
+    h.context.db.prepare("UPDATE cases SET status='EM_ANALISE',lease_token='test-interrupted',lease_until=?,version=2 WHERE id=?").bind(time,id),
+    h.context.db.prepare("UPDATE organizations SET budget_reserved_microusd=100 WHERE id='nexo-demo'"),
+    h.context.db.prepare("INSERT INTO ai_operations(id,org_id,resource_id,kind,attempts) VALUES (?,'nexo-demo',?,'analysis',1)").bind(`analysis:${id}`,id),
+    h.context.db.prepare("INSERT INTO ai_usage(id,org_id,resource_id,operation_id,kind,status,reserved_microusd,created_at) VALUES ('interrupted-fixture','nexo-demo',?,?,'analysis','reserved',100,?)").bind(id,`analysis:${id}`,time),
+  ]);
+  // The recovered version differs, requiring state refresh and explicit retry.
+  assert.equal((await h.call(`cases/${id}/analysis`,'POST',{expectedVersion:2})).status,409);assert.equal(h.provider.calls,0);
+  const current=(await h.call<CaseDetailDTO>(`cases/${id}`)).data;assert.equal(current.status,'FALHA_ANALISE');assert.equal(current.version,3);
+  let settings=(await h.call<SettingsDTO>('admin/settings')).data;assert.equal(settings.budgetReservedMicrousd,0);assert.equal(settings.budgetSpentMicrousd,100);
+  assert.equal((await h.call(`cases/${id}/analysis`,'POST',{expectedVersion:3})).status,200);assert.equal(h.provider.calls,1);
+  settings=(await h.call<SettingsDTO>('admin/settings')).data;assert.equal(settings.budgetSpentMicrousd,130);
+});
+
+test('revogação de papel é aplicada antes de replay idempotente',async t=>{
+  const h=await setup(t);await h.call('admin/memberships','PUT',{userId:'tester-fixture',displayName:'Teste',roles:['tester'],active:true});
+  const tester={...h.context,identity:{id:'tester-fixture',displayName:'Tester'}};const key=crypto.randomUUID();
+  assert.equal((await h.call('intake-sessions','POST',{mode:'demo'},key,tester)).status,200);
+  await h.call('admin/memberships','PUT',{userId:'tester-fixture',displayName:'Teste',roles:['reviewer'],active:true});
+  assert.equal((await h.call('intake-sessions','POST',{mode:'demo'},key,tester)).status,403);
+});
+
+test('administradores concorrentes não removem a última associação administrativa',async t=>{
+  const h=await setup(t);await h.call('admin/memberships','PUT',{userId:'admin-2-fixture',displayName:'Segundo admin',roles:['admin'],active:true});
+  const second={...h.context,identity:{id:'admin-2-fixture',displayName:'Segundo admin'}};
+  const results=await Promise.all([
+    h.call('admin/memberships','PUT',{userId:'admin-2-fixture',displayName:'Segundo admin',roles:['tester'],active:true}),
+    h.call('admin/memberships','PUT',{userId:'admin-fixture',displayName:'Primeiro admin',roles:['tester'],active:true},undefined,second),
+  ]);
+  assert.equal(results.filter(r=>r.status===200).length,1);
+  const remaining=await h.context.db.prepare("SELECT COUNT(*) AS count FROM memberships WHERE active=1 AND EXISTS (SELECT 1 FROM json_each(roles_json) WHERE value='admin')").first<{count:number}>();assert.equal(remaining?.count,1);
+});

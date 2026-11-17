@@ -1,58 +1,26 @@
-# Nexo — projeto completo para continuar
+# Nexo — demonstração em desenvolvimento
 
-Cópia independente da versão 13, publicada em 6 de outubro de 2026.
+Continuação local do pacote de 17/11/2026. A página institucional publicada continua na versão 2; esta branch prepara o aplicativo com entrevista, persistência, análise assistida e revisão humana.
 
-## Continuar pelo ChatGPT
+Site existente: https://nexo-triagem-juridica.insper-1495.chatgpt.site
+Projeto: `appgprj_6ac5417ab1088191936830568f12e4a8`. Não criar outro Site.
 
-1. Anexe Nexo-Projeto-Completo.zip em um novo chat com Sites disponível.
-2. Envie o texto de PROMPT-PARA-O-CHAT.txt (também abaixo).
-3. Peça as alterações desejadas. Ao publicar, será necessário criar um novo Site na conta de quem recebeu a cópia.
+## Desenvolvimento
 
-Não é preciso instalar nada no computador para enviar o ZIP ao chat. A capacidade de editar e publicar depende dos recursos disponíveis na conta da pessoa.
+Requer Node 24 e as dependências do lockfile:
 
-Esta cópia não atualiza o site original. A configuração de hospedagem original e o histórico Git não foram incluídos para evitar vínculo com o projeto de outra conta. URLs canonical e og:url foram removidas apenas da cópia e deverão ser definidas quando houver novo endereço.
+```sh
+npm ci
+npm run check -- --incremental false
+npm test
+npm run build
+npm run dev
+```
 
-## O que o site faz
+Use o endereço impresso pelo servidor (porta inicial 5173). O código ativo do aplicativo está em `app/`, `components/nexo/`, `server/`, `ai/`, `db/` e `lib/`. `src/`, `qa/` e os relatórios históricos documentam a apresentação anterior; não validam o MVP.
 
-Landing page em português para a Nexo, proposta de triagem jurídica assistida por IA. Explica coleta do relato, organização de informações, critérios de atendimento e revisão humana. Não possui backend, IA operacional, banco de dados nem formulário de coleta.
+A construção e os testes locais estão autorizados por A1. IA paga, credencial e limites dependem de A2; publicação depende de A3. A demonstração aceita apenas dados fictícios e acesso expressamente autorizado. Login não concede papel automaticamente.
 
-Estrutura aprovada: Hero; Como funciona; O que sua equipe recebe; Diferenciais; Para quem; Contato; FAQ; Rodapé.
+Leia [RUNBOOK](docs/mvp/RUNBOOK.md), [TASKS](docs/mvp/TASKS.md), [APPROVALS](docs/mvp/APPROVALS.md) e [QA](docs/mvp/QA.md) para estado, comandos e limites. As orientações antigas foram preservadas em `docs/history/`.
 
-Identidade: fundo branco, azul como cor principal e detalhes em laranja, títulos grandes, tipografia serifada de destaque na abertura e animação do processo na hero. Conteúdo direto, sem metáforas vagas nem explicações que dependam de cliques.
-
-Pendência: o proprietário ainda não informou e-mail ou WhatsApp. A seção de contato está sinalizada como “Contato em breve”. Não inventar um canal nem simular envio.
-
-## Arquivos principais
-
-- src/index.html: página, textos, FAQ e navegação.
-- src/narrative.css: layout das seções e ajustes responsivos mais recentes.
-- src/styles.css e src/sections.css: estilos de base.
-- src/hero-lab.js e src/hero-lab.css: animação da abertura e CTA.
-- src/motion.js e src/motion.css: movimento e acessibilidade.
-- src/app.js: inicialização e menu móvel.
-- src/experience.js e src/cases.js: código histórico da demonstração anterior; não inicializado pela versão atual.
-- dist/: site compilado e pronto para hospedagem estática, incluindo licenças.
-- scripts/: compilação e servidor local.
-- package.json e package-lock.json: dependências e versões reproduzíveis.
-- qa/, AI_BUILD_LOG.md e QA_ACCEPTANCE.md: histórico de testes e construção; alguns testes se referem a layouts anteriores e ambientes específicos. Não representam validação atual da nova narrativa.
-
-## Trabalhar no computador
-
-Requer Node.js e npm. Na pasta extraída:
-
-    npm ci
-    npm run check
-    npm run build
-    npm run dev
-
-Abra http://localhost:4173. Para visualizar apenas o site já compilado, basta Node.js e `npm run dev`, sem instalar dependências. Pare o servidor com Ctrl+C.
-
-Edite src/ e execute npm run build para atualizar dist/. O build utiliza esbuild e Framer Motion. Não precisa de chaves de API.
-
-## Publicar em outra conta
-
-Use um novo projeto Sites. Registre a nova identidade de hospedagem na conta da pessoa, mantendo static.directory como dist. Não tente reutilizar o identificador, credenciais ou endereço do Site original. Configure os metadados canonical e og:url com a URL da nova publicação.
-
-## Verificação desta cópia
-
-O código original passou em npm run check e npm run build. Links internos e IDs da página foram verificados. Esta entrega não inclui uma nova auditoria visual em navegador. A integridade dos arquivos copiados foi comparada com o código exportado, exceto os ajustes de portabilidade documentados acima.
+O acesso ao repositório remoto do Sites não foi concedido nesta sessão; a reconciliação com o remoto permanece pendente. O pacote original em Downloads foi preservado. Não publicar esta cópia sem antes comparar o código remoto autorizado.

@@ -326,6 +326,12 @@ body {
 @media(max-width:540px) { .nx-width,.nx-header-inner { width:calc(100% - 32px); } .nx-app h1 { font-size:2.1rem; } .nx-paper { padding:21px; border-radius:9px; } .nx-case-row { flex-direction:column; gap:14px; } .nx-case-row>div:last-child { width:100%; flex-direction:row; align-items:center; justify-content:space-between; gap:8px; } .nx-two-fields,.nx-stats { grid-template-columns:1fr; gap:16px; } .nx-stats dd { font-size:1.1rem; } .nx-input-footer { align-items:flex-start; flex-direction:column; } .nx-input-footer>.nx-button { width:100%; } .nx-section-header { flex-wrap:wrap; } .nx-member-list li { flex-direction:column; align-items:flex-start; gap:12px; } .nx-edit-fact { padding:15px; } .nx-heading-actions { width:100%; } .nx-list-toolbar { align-items:flex-start; flex-direction:column; gap:12px; } .nx-list-toolbar .nx-field { width:100%; max-width:none; } }
 @media(prefers-reduced-motion:reduce) { .nx-app * { scroll-behavior:auto!important; transition:none!important; } }
 
+/* The demo CTA is longer than the original institutional label. */
+@media(max-width:540px) {
+  .hero .button-group { flex-direction:column; align-items:stretch; }
+  .hero .button-group .button { flex:0 0 auto; width:100%; white-space:normal; }
+}
+
 .nx-delete-section { margin-top:40px; padding-top:24px; border-top:1px solid #e0c9c3; color:#8b3023; font-size:.88rem; }
 .nx-delete-section>summary { cursor:pointer; min-height:36px; font-weight:600; }
 .nx-delete-section>p { margin-top:14px; }

@@ -1,6 +1,6 @@
 # Nexo — voz, encaminhamento e retorno da banca
 
-Atualização local em 17/11/2026. **Ainda não publicada.** O endereço https://aps-nexo.vercel.app continua na versão anterior. A autorização daquele deploy foi usada; esta atualização exige confirmação específica. Fonte funcional: `98abab0` na branch `continue-nexo-project`.
+Atualização publicada e verificada em 17/11/2026 em **https://aps-nexo.vercel.app**, após Florença responder “pode publicar”. A autorização específica desta atualização foi utilizada. Fonte funcional: `98abab0` na branch `continue-nexo-project`.
 
 ## O que mudou
 
@@ -20,7 +20,7 @@ A pessoa precisa marcar a ciência sobre o processamento pelo fornecedor do nave
 
 O texto existente fica protegido. Resultados provisórios são mostrados sem gravação; apenas finais são acrescentados, sem duplicação, ao encerrar. Salvar a resposta continua sendo uma ação separada. Limite de dois minutos, limite de caracteres, parada/cancelamento e troca de aba tratados. Falhas de permissão, rede, idioma ou microfone oferecem saída por escrita. Se há falha de serviço após resultados finais, esses resultados são preservados no rascunho.
 
-Pendente: testar captação e reconhecimento reais no navegador/dispositivo que será usado na apresentação. Nesta rodada não foi acionado microfone real nem enviado áudio a um provedor. Uma pergunta sobre preferência por serviço de voz do navegador foi apresentada ao Florença; até este registro não houve resposta. O código fica preparado para revisão, com opção desmarcada por padrão.
+Pendente: testar captação e reconhecimento reais no navegador/dispositivo que será usado na apresentação. Nesta rodada não foi acionado microfone real nem enviado áudio a um provedor. Florença aprovou a publicação da versão com ditado opcional após receber a explicação sobre processamento pelo navegador. A opção continua desmarcada por padrão para cada visitante.
 
 ## Indicação de encaminhamento
 
@@ -57,8 +57,16 @@ Capturas locais: [home desktop](evidencias/banca-home-desktop.png), [home mobile
 
 A economia de tempo/custo é uma hipótese a validar, não um resultado medido. A demo não cria petição, não analisa documentos e não presta atendimento real.
 
-## Candidato para publicação, se autorizado
+## Publicação executada
 
-Pasta limpa: `outputs/nexo-vercel-6oGVPJ`, 28 arquivos (1.501.273 bytes), fonte `98abab0ec3b085cf1c209eb2f73a13cf97a59909`. Preparada por `npm run package:vercel`, selecionando manifesto e assets públicos versionados, sem abrir arquivos de ambiente. Não publicar `dist/browser` bruto. Destino proposto: projeto Vercel existente `aps-nexo`, time de hospedagem (identificador pessoal omitido), sem serviço adicional.
+Pasta limpa: `outputs/nexo-vercel-6oGVPJ`, 28 arquivos (1.501.273 bytes), fonte `98abab0ec3b085cf1c209eb2f73a13cf97a59909`. Preparada por `npm run package:vercel`, selecionando manifesto e assets públicos versionados, sem abrir arquivos de ambiente. Não publicar `dist/browser` bruto. Destino: projeto Vercel existente `aps-nexo`, time de hospedagem (identificador pessoal omitido), sem serviço adicional.
 
-Antes de publicar, receber aprovação específica da Florença sobre esta atualização e a opção de ditado. Nenhum push, PR, merge ou deploy foi executado nesta rodada. A versão anteriormente publicada permanece disponível para reversão por novo deploy autorizado.
+Autorização recebida: “pode publicar”, em resposta à pergunta específica sobre esta versão com ditado opcional. Publicação concluída: `dpl_Dfd19aiYnqkr7m8vEaGbaenfbJBd`, READY, produção; alias https://aps-nexo.vercel.app. Inspeção: [endereço de inspeção omitido; consultar o ID do deployment]. URL pública: https://aps-nexo.vercel.app.
+
+SHA256 do conjunto de caminhos e hashes dos 28 arquivos: `42438bfd46997c01468a077a213b68a8294cef887e243bf23ece693c40c5342e`. Dry-run confirmou framework Other, 28 arquivos e 1.501.273 bytes. Fonte funcional 98abab0; commits posteriores de documentação não alteram o candidato.
+
+Conferência pública sem autenticação: home, relato, painel, áudio, CSS, robots e sitemap retornam 200; rota desconhecida 404. HTML e áudio publicados correspondem exatamente aos arquivos do candidato; CSP e noindex operacional presentes. O áudio tocou no navegador, 20,29 segundos, sem erro.
+
+Jornada real no alias: exemplo fictício salvo, escolhas cancelamento/avaliação/não, indicação de avaliação de consumo, confirmação, ficha automática e recarga preservando original e ficha. Caso `79265bf4-f3a6-4bc7-b79a-13ccddfa6508`, apenas no navegador de teste. O registro auxiliar permanece no original e não polui os trechos da ficha. Nenhum recurso externo observado nessa jornada; o ditado não foi acionado. Na home mobile de 390 px, largura do conteúdo de 390 px.
+
+Nenhum push, PR, merge, serviço de banco, API paga ou nova contratação foi realizado. A aprovação deste deploy foi consumida. Novas publicações exigem confirmação específica. A captação real pelo microfone permanece pendente.

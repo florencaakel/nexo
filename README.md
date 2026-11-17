@@ -1,8 +1,8 @@
 # Nexo — demonstração sem IA paga
 
-## Atualização local após o retorno da banca
+## Atualização publicada após o retorno da banca
 
-Voz por ditado opcional, indicação administrativa de encaminhamento, ficha automática e apresentação focada no atendimento humano de consumo. **Preparada, ainda não publicada.** Veja [mudanças, evidências e pendências](docs/mvp/RETORNO-BANCA.md). 119 testes passaram. O ditado pode processar áudio pelo fornecedor do navegador, mediante ciência do visitante; apenas o texto confirmado é salvo pelo Nexo.
+Voz por ditado opcional, indicação administrativa de encaminhamento, ficha automática e apresentação focada no atendimento humano de consumo. **Publicada em https://aps-nexo.vercel.app.** Veja [mudanças, evidências e pendências](docs/mvp/RETORNO-BANCA.md). 119 testes passaram. O ditado pode processar áudio pelo fornecedor do navegador, mediante ciência do visitante; apenas o texto confirmado é salvo pelo Nexo.
 
 ## Vercel: demonstração por navegador
 

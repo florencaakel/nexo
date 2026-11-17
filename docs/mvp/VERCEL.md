@@ -1,6 +1,6 @@
 # Nexo na Vercel — demonstração por navegador
 
-> Atualização local posterior ao retorno da banca: [voz, encaminhamento, apresentação e pendências](RETORNO-BANCA.md). Fonte `98abab0`, 119 testes. Ainda não publicada; o registro do deploy anterior abaixo permanece histórico.
+> Atualização com voz e retorno da banca publicada e verificada em https://aps-nexo.vercel.app: [estado atual](RETORNO-BANCA.md). Fonte `98abab0`, 119 testes, deployment `dpl_Dfd19aiYnqkr7m8vEaGbaenfbJBd`. O registro anterior abaixo permanece histórico.
 
 Destino solicitado: https://aps-nexo.vercel.app. Publicado e verificado em 17/11/2026, mediante autorização expressa da Florença. Conta e time de hospedagem com identificadores pessoais omitidos; plano Hobby confirmado pela CLI. Nenhum recurso de banco estava contratado nesse escopo. Não criar recurso pago, instalar integração de IA ou ativar trial.
 

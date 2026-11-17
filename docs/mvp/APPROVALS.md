@@ -67,3 +67,5 @@ Florença pediu adicionar a opção de áudio em vez de escrever, uma resposta s
 Após a entrega das prévias, dos 119 testes e da pergunta “Você aprova esta versão com ditado opcional e a publicação em aps-nexo.vercel.app?”, Florença respondeu: **“pode publicar”**.
 
 Escopo: um novo deploy de produção do candidato `outputs/nexo-vercel-6oGVPJ`, fonte funcional `98abab0`, no projeto Vercel existente `aps-nexo`. Inclui apresentação revisada, ditado opcional nativo com ciência sobre processamento pelo navegador, indicação administrativa de encaminhamento e ficha automática. Sem API paga, banco contratado ou novos serviços. O teste com captação real de microfone permanece pendente e foi informado antes da aprovação. Esta aprovação não autoriza push, PR, merge, exclusões ou publicações posteriores.
+
+Publicação autorizada executada em 17/11/2026: READY, `dpl_Dfd19aiYnqkr7m8vEaGbaenfbJBd`, alias https://aps-nexo.vercel.app. Candidato aprovado publicado sem alteração de código. Conferência HTTP e jornada de relato/encaminhamento/ficha com recarga passaram no alias público. A autorização deste deploy foi consumida; novas publicações exigem nova confirmação.

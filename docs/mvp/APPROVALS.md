@@ -21,7 +21,7 @@ Efeito: nomes de personagens, organização e relatos podem ser sintéticos e de
 | --- | --- | --- | --- |
 | A1 | APROVADA | Escopo e arquitetura de PLAN.md; demo de consumidor; própria usuária como administradora/revisora/testadora por identidade verificada | Recebida: “Sim, eu aprovo, pode começar, seguindo o prompt.” |
 | A2 | RECUSADA E SUBSTITUÍDA | Não usar IA paga; implementar entrevista e ficha por regras | Pedido expresso de Florença em 17/11/2026; não depende de nova aprovação de IA |
-| A3 | NÃO SOLICITADA | Publicação do candidato testado no Site existente | Integração, QA, limitações, público e recuperação apresentados |
+| A3 | AUTORIZADA PARA VERCEL | Demo estática por navegador, projeto aps-nexo, plano gratuito | Pedido e opção de armazenamento registrados abaixo; Sites não autorizado |
 | A4 | FORA DO ESCOPO ATUAL | Operação com relatos reais | Somente novo pedido expresso; coleta real permanece desabilitada |
 
 ## Limites vigentes
@@ -49,3 +49,9 @@ Florença: “nao quero ter gastos com isso, faça uma versão que não precise 
 Efeito: substituir a dependência de IA paga por perguntas predefinidas e ficha organizada por regras locais do aplicativo. Sem modelo, chave, assinatura, API de IA ou nova contratação. Não foi interpretado como autorização para instalar um modelo local pesado ou recorrer a um serviço externo com cota temporária gratuita. A versão funciona com orçamento zero e preserva revisão humana, banco e controle de acesso.
 
 A2 deixa de ser pendência desta entrega. O documento A2-PROPOSTA.md é histórico, não instrução ativa. Publicação, push, PR, merge, deploy e exclusões continuam exigindo confirmação específica. Gratuidade de hospedagem não foi presumida; não provisionar recursos pagos. Nenhuma aprovação A3 foi recebida.
+
+## Publicação Vercel autorizada — demo por navegador
+
+Pedido expresso: “publica na vercel como - aps-nexo.vercel.app”. Após explicar a incompatibilidade do login/banco Sites com Vercel, a Florença escolheu: “Demo por navegador: entrevista, ficha e revisão funcionam sem login; os dados ficam só naquele navegador, sem banco contratado (recomendado para a apresentação)”.
+
+Escopo autorizado: adaptar e publicar uma demonstração estática pública na conta Vercel existente, projeto `aps-nexo`, no plano Hobby sem recursos pagos. Sem login, banco remoto, sincronização, terceiros de IA ou envio de relatos. Os registros ficam somente no perfil de navegador do visitante. A criação do projeto nomeado é parte do pedido. Esta autorização específica não autoriza Git push, PR, merge, exclusões ou publicação no Sites. Não pedir novamente confirmação deste mesmo deploy.

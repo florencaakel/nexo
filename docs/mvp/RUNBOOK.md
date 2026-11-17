@@ -1,10 +1,10 @@
 # Nexo — operação e retomada local
 
-Atualizado em 17/11/2026. Desenvolvimento pré-A2; nenhuma chamada paga, sincronização remota ou publicação nesta etapa.
+Atualizado em 17/11/2026. Versão por regras, sem IA paga; nenhuma chamada paga, sincronização remota ou publicação nesta etapa.
 
 ## Projeto e aprovações
 
-Site preservado: `appgprj_6ac5417ab1088191936830568f12e4a8`, https://nexo-triagem-juridica.insper-1495.chatgpt.site, versão 2 conhecida. A1 autoriza os módulos e testes locais. [A2](A2-PROPOSTA.md) propõe IA e orçamento; A3 autoriza uma publicação concreta. Push, PR, merge e deploy precisam de confirmação específica da Florença. Não criar outro Site.
+Site preservado: `appgprj_6ac5417ab1088191936830568f12e4a8`, https://nexo-triagem-juridica.insper-1495.chatgpt.site, versão 2 conhecida. A1 e o pedido posterior autorizam os módulos e testes locais por regras. A proposta A2 foi recusada e substituída; não há credencial, modelo ou orçamento de IA a configurar. A3 autoriza somente uma publicação concreta. Push, PR, merge e deploy precisam de confirmação específica da Florença. Não criar outro Site.
 
 Nesta sessão, get_site retornou metadados v2, mas credencial do repositório falhou com “Sites project not found”. A cópia local vem do pacote em Downloads e foi preservada numa branch. Antes de sincronizar, obter acesso autorizado e comparar com o código remoto sem sobrescrever mudanças posteriores.
 
@@ -22,7 +22,7 @@ npm run dev
 
 O servidor imprime a URL (porta inicial 5173). O build gera Worker em `dist/server/index.js`. Os arquivos estáticos históricos de `src/` e os relatórios em `qa/` não representam a aplicação atual.
 
-O starter oferece login fictício oficial apenas na prévia local, restrito a loopback. A identidade local é `local_seedy`. A configuração `.dev.vars` criada nesta sessão é ignorada pelo Git e contém somente bootstrap dessa identidade, aprovação de IA falsa e orçamento zero. Ela não é credencial hospedada e não deve ser transferida para produção. Em outra máquina, criar configuração local equivalente explicitamente; nunca usar o primeiro visitante como administrador.
+O starter oferece login fictício oficial apenas na prévia local, restrito a loopback. A identidade local é `local_seedy`. A configuração `.dev.vars` criada na preparação é ignorada pelo Git e define o bootstrap dessa identidade. Os campos antigos de aprovação de IA falsa e orçamento zero não são lidos pela rota ativa. Ela não é credencial hospedada e não deve ser transferida para produção. Em outra máquina, criar configuração local equivalente com `NEXO_BOOTSTRAP_ADMIN_ID=local_seedy`; nunca usar o primeiro visitante como administrador.
 
 ## Migrações locais
 
@@ -43,30 +43,31 @@ Isso não aplica migrações hospedadas. Não alterar SQL histórico aplicado; m
 ## Testar sem IA paga
 
 1. Abrir `/relato` e entrar pelo login da prévia local.
-2. Iniciar relato fictício, escrever, salvar e conferir as respostas.
-3. Confirmar que todos os dados são fictícios e enviar. Guardar o link da sessão; o identificador do caso aparece somente após persistência.
-4. Abrir `/painel`, filtrar os casos e abrir o caso salvo. Conferir o relato original. Sem IA configurada, a tela informa ausência de ficha; não há resposta fixa no produto.
-5. Registrar decisão humana com notas. Sem ficha, a revisão é apenas do relato original; uma ficha real poderá ser revisada após A2. A decisão e seu autor/horário ficam no histórico.
+2. Iniciar relato fictício, escrever e salvar. “Pedir próxima pergunta” escolhe uma pergunta predefinida por campos/palavras-chave; nenhuma API de IA é chamada. Responder ou encerrar, conferir e corrigir antes de enviar.
+3. Confirmar que todos os dados são fictícios e enviar. Guardar o link da sessão; o identificador aparece somente após persistência.
+4. Organizar a ficha no recibo ou abrir o caso em `/painel` e usar a ação correspondente. A ficha extrai trechos do relato novo, com fontes. Não é um exemplo fixo nem um resumo por IA.
+5. Conferir o original e as fontes. Corrigir a ficha se necessário, classificar e registrar uma decisão humana com notas. A decisão e seu autor/horário ficam no histórico.
 6. Recarregar e verificar a persistência. Testadores não recebem ficha nem notas internas na sessão/recibo.
-7. Em `/painel/configuracoes`, pausar novos relatos, editar critérios (nova versão), gerenciar associações explícitas e consultar consumo.
+7. Em `/painel/configuracoes`, pausar a coleta (também pausa a organização por regras), editar critérios em nova versão ou gerenciar associações explícitas. A tela não oferece ativação de IA paga, orçamento ou tokens.
+
+Não instalar plugin de IA, fornecer chave ou ativar cobrança. A rota fixa `createRulesProvider()` e custo zero. A aplicação rejeita ativação de IA paga e orçamento positivo pela configuração. Contabilidade antiga, se houver, é preservada; não representa custo desta execução por regras.
 
 As sessões expiram após 24 horas. A política de retenção configurável não é um serviço automático de expurgo: a exclusão de caso sintético é manual pelo administrador; agendamento hospedado permanece pendente. A exclusão remove conteúdo e caches correlatos, preservando contabilidade sem relato para não zerar orçamento. Não apagar dados do usuário sem a confirmação aplicável.
 
-## Falhas e concorrência
+## Falhas, concorrência e limites
 
 - Uma ação usa chave de idempotência. Em erro de rede, consultar estado salvo antes de repetir; a interface preserva a chave da mesma ação enquanto montada.
-- Correções e decisões exigem a versão observada. Conflitos não sobrescrevem outra revisão; atualizar e conferir antes de reenviar.
-- O relato é salvo antes da análise final. Análise é ação explícita e só pode ocorrer com aprovação, configuração, acesso e orçamento.
-- Reserva é atômica. Timeout/falha incerta consome conservadoramente o teto reservado. Nenhuma repetição automática; até três tentativas por operação lógica.
-- Interrupção de processo preserva relato e reserva; recuperação de lease vencido deve atualizar o estado sem acionar IA. Não interpretar reserva como chamada gratuita nem zerar contabilidade para permitir novas tentativas.
-- Pausar coleta e IA mantém leitura autorizada dos registros.
+- Correções e decisões exigem a versão observada. Conflitos não sobrescrevem outra revisão.
+- O relato é salvo antes da ficha. Organização é uma ação explícita autorizada e disponível com a coleta ativa; não depende de aprovação paga ou saldo.
+- Há trava por operação e até três tentativas, sem repetição automática. Interrupções deixam o original salvo; a recuperação libera o estado vencido. Operações por regras têm reserva/custo zero. Histórico de reservas externas não é apagado.
+- Pausa mantém leitura autorizada. Login posterior não desfaz a pausa do administrador.
+- Regras não compreendem todo o contexto; datas são copiadas, grupos vazios não provam ausência e o trecho de abertura não é um resumo. Área, compatibilidade e prioridade exigem revisão humana.
+- Frases com identificadores comuns/marcação podem ser omitidas, com aviso; o original permanece disponível. Sem trecho adequado, a ficha falha explicitamente e a revisão manual continua possível. Não há garantia de anonimização.
 
-## Depois de A2 e antes de A3
+## Publicação futura
 
-Instalar OpenAI Developers e seguir o fluxo protegido exigido pela skill de Sites. Não copiar chave para chat, arquivo versionado, frontend ou relatório. Configurar o modelo e preços aprovados no servidor, com teto inicialmente US$ 10 se essa proposta for aprovada. A proposta completa define fase de demonstração e teto global.
+O trabalho atual funciona localmente sem serviço pago de IA. Não foi publicada nova versão. Antes de qualquer ação remota: reconciliar o repositório autorizado, confirmar hospedagem compatível com o pedido de não gastar, identidade/associações e persistência D1, preparar candidato e recuperação. Não contratar serviços ou criar recursos cobrados.
 
-Executar os 12 casos da rubrica com modelo real; guardar resultados e consumo sem tratar mocks como avaliação. Confirmar identidade hospedada, associação do administrador por ID verificado, ausência de acesso indevido e persistência D1. A prévia local não comprova esses itens.
+Não há backup hospedado validado nem migração remota nesta entrega. Reverter código não desfaz banco. Sitemap só da apresentação; rotas operacionais têm noindex. A prévia local não comprova identidade/isolamento do ambiente hospedado. Push, PR, merge, deploy e exclusões exigem confirmação específica.
 
-Não há backup hospedado validado nem migração remota nesta entrega. Antes de A3, reconciliar o repositório, confirmar custo de hospedagem, preparar cópia de segurança quando aplicável e plano de recuperação. Reverter código não desfaz banco. O sitemap contém apenas a apresentação; rotas de operação têm noindex e não devem ser indexadas.
-
-Dados reais e piloto real continuam fora do escopo. O aplicativo não é parecer jurídico e não decide atendimento automaticamente.
+Dados reais e piloto real continuam fora do escopo. A aplicação organiza informação e não é parecer jurídico.

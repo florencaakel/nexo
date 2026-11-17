@@ -1,13 +1,12 @@
-# Nexo — demonstração em desenvolvimento
+# Nexo — demonstração sem IA paga
 
-Continuação local do pacote de 17/11/2026. A página institucional publicada continua na versão 2; esta branch prepara o aplicativo com entrevista, persistência, análise assistida e revisão humana.
+Entrevista guiada, relato persistente, ficha organizada por regras e revisão humana. O processamento atual não usa modelo de IA, API paga, credencial de provedor ou assinatura. Funciona localmente com orçamento zero.
 
-Site existente: https://nexo-triagem-juridica.insper-1495.chatgpt.site
-Projeto: `appgprj_6ac5417ab1088191936830568f12e4a8`. Não criar outro Site.
+A ficha copia trechos das respostas e mantém suas referências. Não interpreta juridicamente o relato nem classifica área, compatibilidade ou prioridade; essas decisões ficam com o revisor. Demonstração somente com casos fictícios e acesso autorizado.
 
-## Desenvolvimento
+## Executar localmente
 
-Requer Node 24 e as dependências do lockfile:
+Node 24 e dependências do lockfile:
 
 ```sh
 npm ci
@@ -17,10 +16,14 @@ npm run build
 npm run dev
 ```
 
-Use o endereço impresso pelo servidor (porta inicial 5173). O código ativo do aplicativo está em `app/`, `components/nexo/`, `server/`, `ai/`, `db/` e `lib/`. `src/`, `qa/` e os relatórios históricos documentam a apresentação anterior; não validam o MVP.
+Nesta workspace, o banco local e o login de demonstração já estão preparados. Abra o endereço impresso pelo servidor (porta inicial 5173), entre e use `/relato`. Consulte [RUNBOOK](docs/mvp/RUNBOOK.md) para preparar outra máquina, sem credencial de IA.
 
-A construção e os testes locais estão autorizados por A1. IA paga, credencial e limites dependem de A2; publicação depende de A3. A demonstração aceita apenas dados fictícios e acesso expressamente autorizado. Login não concede papel automaticamente.
+O código ativo está em `app/`, `components/nexo/`, `server/`, `ai/rules.ts`, `db/` e `lib/`. O adaptador externo em `ai/provider.ts` foi preservado como histórico inativo; não faz parte da rota nem do bundle atual. Os nomes internos `analysis`/`ai_usage` foram mantidos para compatibilidade do banco, com custo e tokens zero nas regras.
 
-Leia [RUNBOOK](docs/mvp/RUNBOOK.md), [TASKS](docs/mvp/TASKS.md), [APPROVALS](docs/mvp/APPROVALS.md) e [QA](docs/mvp/QA.md) para estado, comandos e limites. As orientações antigas foram preservadas em `docs/history/`.
+## Estado do projeto
 
-O acesso ao repositório remoto do Sites não foi concedido nesta sessão; a reconciliação com o remoto permanece pendente. O pacote original em Downloads foi preservado. Não publicar esta cópia sem antes comparar o código remoto autorizado.
+A proposta A2 de IA paga foi recusada e substituída pelo pedido da Florença em 17/11/2026. Nenhuma compra, chamada paga ou publicação foi executada. A execução local não requer serviço pago de IA; hospedagem não foi contratada nem declarada gratuita.
+
+Site existente: https://nexo-triagem-juridica.insper-1495.chatgpt.site, projeto `appgprj_6ac5417ab1088191936830568f12e4a8`, última versão conhecida 2. As mudanças estão somente na branch local. Não criar outro Site. O acesso ao repositório do Sites e a reconciliação remota permanecem pendentes antes de qualquer sincronização. O pacote original em Downloads foi preservado.
+
+Leia [plano](docs/mvp/PLAN.md), [tarefas](docs/mvp/TASKS.md), [aprovações](docs/mvp/APPROVALS.md) e [QA](docs/mvp/QA.md). Push, PR, merge, deploy e exclusões exigem confirmação específica. Histórico anterior em `docs/history/` e relatórios identificados como históricos.

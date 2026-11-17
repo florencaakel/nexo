@@ -1,5 +1,8 @@
 # Nexo — casos sintéticos e rubrica prévia
 
+> Atualização de 17/11/2026: os 12 relatos continuam como fixtures, mas a rubrica semântica de IA abaixo foi substituída para a versão por regras. Não há modelo, classificação automática, avaliação de urgência ou promessa de compreensão contextual. O aceite atual está em [QA-SEM-IA-PAGA](QA-SEM-IA-PAGA.md): trechos literais/citações, formato, zero rede/custo, encerramento voluntário, isolamento e revisão humana. O restante deste documento preserva as expectativas históricas da proposta anterior.
+
+
 Versão: 1.0. Preparação de T01, antes de executar a bateria. Este documento não registra testes aprovados. Escopo: demonstração restrita de consumidor, conforme PLAN.md e seção 10 do prompt vinculante. IA real e custos dependem de A2; publicação depende de A3.
 
 Todos os personagens, empresas, contatos, valores e eventos abaixo são fictícios. Não usar relatos reais. Os identificadores `C01-M01` etc. são rótulos de fixture: S3 deve associá-los aos IDs efetivamente atribuídos às mensagens, sem enviá-los como fatos do caso.

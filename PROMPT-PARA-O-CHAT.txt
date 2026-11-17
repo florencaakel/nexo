@@ -1,3 +1,7 @@
-CONTINUAR NEXO
+CONTINUAR NEXO — VERSÃO SEM IA PAGA
 
-Leia README.md e docs/mvp/{PLAN,TASKS,APPROVALS,API-CONTRACTS,QA,RUNBOOK}.md. Preserve o Site appgprj_6ac5417ab1088191936830568f12e4a8 e a apresentação branca, azul e laranja. A1 já aprovada; A2 e A3 permanecem pendentes salvo nova autorização registrada. Trabalhe na branch, faça commits em português e não execute push/PR/merge/deploy ou apague arquivos sem confirmação específica. Nunca abra arquivos .env*. Não use dados reais nesta demonstração nem invente resultados de testes. Antes da sincronização, confira o acesso e reconcilie o remoto com o pacote original e os commits desta branch. Documentação legada está preservada em docs/history/.
+Leia README.md e docs/mvp/{PLAN,TASKS,APPROVALS,API-CONTRACTS,QA,RUNBOOK}.md. Preserve o Site appgprj_6ac5417ab1088191936830568f12e4a8 e a apresentação branca, azul e laranja.
+
+A Florença pediu: “nao quero ter gastos com isso, faça uma versão que não precise de nenhuma IA paga.” A implementação ativa usa ai/rules.ts, perguntas predefinidas e trechos literais, sem serviço externo de IA. Não instalar provedor, criar credencial, gastar com API ou exigir A2. A proposta paga foi substituída. Classificação e decisão continuam humanas.
+
+A1 e o pedido novo autorizam desenvolvimento e testes locais. A3 ainda não solicitada. Trabalhe em branch, faça commits em português e não execute push/PR/merge/deploy ou apague arquivos sem confirmação específica. Nunca abra arquivos .env*. Use apenas casos fictícios e resultados de testes realmente observados. Antes da sincronização, obtenha acesso e reconcilie o remoto com o pacote original e os commits desta branch. Não presumir hospedagem gratuita. Histórico em docs/history/.

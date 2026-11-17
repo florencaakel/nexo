@@ -1,12 +1,12 @@
 # Nexo — evidências atuais e histórico
 
-Atualização de 17/11/2026: TypeScript e build do aplicativo passaram. Revisão independente: **65/65 testes**, com IA simulada exclusivamente nos testes. Fluxo local de relato, recibo, painel, decisão humana e persistência após recarga confirmado no navegador.
+Atualização de 17/11/2026: versão por regras sem IA paga. **91/91 testes** passaram (21 novos independentes + 5 de integração por regras + 65 anteriores). TypeScript e build passaram. O motor real foi exercitado nos 12 relatos sintéticos com schema/citações válidos, zero chamadas de rede e custo/tokens zero; fixtures de resposta do adaptador antigo não representam o motor atual.
 
-- [Revisão independente pré-A2](QA-PRE-A2.md): controles, correções, comandos e limites.
-- [Navegador local e capturas](QA-BROWSER-LOCAL.md): desktop/mobile, teclado básico, persistência e pausa.
-- [Proposta A2](A2-PROPOSTA.md): próximo gate, sem aprovação ou consumo real.
+- [QA independente sem IA paga](QA-SEM-IA-PAGA.md): API, 12 casos, rede bloqueada, orçamento zero, controles pagos rejeitados e inspeção do bundle.
+- [Navegador da versão por regras](QA-BROWSER-REGRAS.md): relato novo, pergunta, ficha, decisão, recarga e desktop/mobile.
+- [QA pré-A2](QA-PRE-A2.md) e [navegador anterior](QA-BROWSER-LOCAL.md): evidências históricas anteriores à mudança de escopo.
 
-IA real, qualidade pela rubrica, identidade/D1 hospedados e reconciliação remota permanecem pendentes. O conteúdo abaixo é histórico da apresentação e da auditoria T00; seus PASS não comprovam o novo MVP.
+A proposta A2 paga foi recusada/substituída; não é gate pendente. Autenticação/D1 hospedados, reconciliação remota e publicação não foram testados nesta versão. Gratuidade de hospedagem não foi atestada. O conteúdo abaixo é histórico da apresentação/T00; seus PASS não comprovam o MVP atual.
 
 ---
 

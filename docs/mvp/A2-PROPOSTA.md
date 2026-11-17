@@ -1,6 +1,6 @@
-# A2 — proposta para integração de IA
+# A2 — proposta histórica substituída
 
-Preparada em 17/11/2026. **Não aprovada. Nenhuma chamada paga executada nesta etapa.**
+Preparada em 17/11/2026. **Recusada e substituída pelo pedido da Florença de uma versão sem IA paga. Não executar esta proposta nem tratá-la como próximo gate.** O código ativo usa regras, sem credencial ou chamada paga. Ver [aprovações](APPROVALS.md) e [plano vigente](PLAN.md). Os valores e referências abaixo são apenas registro histórico, não recomendação atual.
 
 ## Decisão proposta
 

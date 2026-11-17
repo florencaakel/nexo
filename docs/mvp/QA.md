@@ -1,5 +1,8 @@
 # Nexo — evidências atuais e histórico
 
+> Atualização final de 17/11/2026: a demo por navegador foi autorizada e publicada em https://aps-nexo.vercel.app, sem login, banco remoto ou IA paga. Dados só no navegador; 99 testes passaram. [VERCEL.md](VERCEL.md) é a referência atual de publicação, arquitetura, comandos e QA. O restante preserva o contexto da versão Worker/D1 anterior.
+
+
 Atualização de 17/11/2026: versão por regras sem IA paga. **91/91 testes** passaram (21 novos independentes + 5 de integração por regras + 65 anteriores). TypeScript e build passaram. O motor real foi exercitado nos 12 relatos sintéticos com schema/citações válidos, zero chamadas de rede e custo/tokens zero; fixtures de resposta do adaptador antigo não representam o motor atual.
 
 - [QA independente sem IA paga](QA-SEM-IA-PAGA.md): API, 12 casos, rede bloqueada, orçamento zero, controles pagos rejeitados e inspeção do bundle.

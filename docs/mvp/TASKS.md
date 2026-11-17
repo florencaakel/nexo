@@ -1,5 +1,8 @@
 # Nexo — tarefas da versão sem IA paga
 
+> Atualização final de 17/11/2026: a demo por navegador foi autorizada e publicada em https://aps-nexo.vercel.app, sem login, banco remoto ou IA paga. Dados só no navegador; 99 testes passaram. [VERCEL.md](VERCEL.md) é a referência atual de publicação, arquitetura, comandos e QA. O restante preserva o contexto da versão Worker/D1 anterior.
+
+
 Atualizado em 17/11/2026. A1 e o novo pedido da Florença autorizam desenvolvimento/testes locais. A proposta A2 paga foi substituída; A3 continua não solicitada. A tabela anterior está no [histórico](../history/PRE-REGRAS-TASKS.md).
 
 | Item | Estado | Evidência ou próxima ação |

@@ -1,5 +1,8 @@
 # Nexo — operação e retomada local
 
+> Atualização final de 17/11/2026: a demo por navegador foi autorizada e publicada em https://aps-nexo.vercel.app, sem login, banco remoto ou IA paga. Dados só no navegador; 99 testes passaram. [VERCEL.md](VERCEL.md) é a referência atual de publicação, arquitetura, comandos e QA. O restante preserva o contexto da versão Worker/D1 anterior.
+
+
 Atualizado em 17/11/2026. Versão por regras, sem IA paga; nenhuma chamada paga, sincronização remota ou publicação nesta etapa.
 
 ## Projeto e aprovações

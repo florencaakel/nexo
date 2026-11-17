@@ -2,6 +2,8 @@
 
 ## Vercel: demonstração por navegador
 
+**Publicado:** https://aps-nexo.vercel.app — [registro e testes](docs/mvp/VERCEL.md).
+
 Por escolha expressa da Florença, a edição para `aps-nexo.vercel.app` funciona sem login e sem banco contratado. Entrevista, ficha e revisão simulada rodam no navegador; os relatos ficam no armazenamento local desse navegador. Não há sincronização entre dispositivos, envio à equipe ou controle de acesso entre pessoas que usam o mesmo perfil. Limpar os dados do site remove os registros. Use apenas casos fictícios.
 
 ```sh
@@ -10,7 +12,7 @@ npm run build:vercel
 npm run preview:vercel
 ```
 
-Prévia estática em `http://127.0.0.1:5180`. O build publicável fica em `dist/browser`, incluindo configuração Vercel. Não contém banco local, credenciais, código servidor hospedado ou serviço de IA. A versão anterior Worker/D1 permanece disponível pelos comandos abaixo.
+Prévia estática em `http://127.0.0.1:5180`. O build publicável fica em `dist/browser`, incluindo configuração Vercel. Para publicar, use `npm run package:vercel` e somente a pasta de arquivos selecionados informada pelo comando. Não contém banco local, credenciais, código servidor hospedado ou serviço de IA. A versão anterior Worker/D1 permanece disponível pelos comandos abaixo.
 
 ## Versão Worker/D1 preservada
 

@@ -55,3 +55,5 @@ A2 deixa de ser pendência desta entrega. O documento A2-PROPOSTA.md é históri
 Pedido expresso: “publica na vercel como - aps-nexo.vercel.app”. Após explicar a incompatibilidade do login/banco Sites com Vercel, a Florença escolheu: “Demo por navegador: entrevista, ficha e revisão funcionam sem login; os dados ficam só naquele navegador, sem banco contratado (recomendado para a apresentação)”.
 
 Escopo autorizado: adaptar e publicar uma demonstração estática pública na conta Vercel existente, projeto `aps-nexo`, no plano Hobby sem recursos pagos. Sem login, banco remoto, sincronização, terceiros de IA ou envio de relatos. Os registros ficam somente no perfil de navegador do visitante. A criação do projeto nomeado é parte do pedido. Esta autorização específica não autoriza Git push, PR, merge, exclusões ou publicação no Sites. Não pedir novamente confirmação deste mesmo deploy.
+
+Publicação autorizada executada: READY em 17/11/2026, deployment `dpl_3V6mou3RT1CFzihkjcxu1ZGPD8FH`, https://aps-nexo.vercel.app. Fonte `b4fc760`. Nenhuma autorização de push/PR/merge ou publicação posterior foi inferida. A autorização específica deste deploy foi consumida.

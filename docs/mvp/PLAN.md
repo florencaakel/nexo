@@ -1,5 +1,8 @@
 # Nexo — plano vigente sem IA paga
 
+> Atualização final de 17/11/2026: a demo por navegador foi autorizada e publicada em https://aps-nexo.vercel.app, sem login, banco remoto ou IA paga. Dados só no navegador; 99 testes passaram. [VERCEL.md](VERCEL.md) é a referência atual de publicação, arquitetura, comandos e QA. O restante preserva o contexto da versão Worker/D1 anterior.
+
+
 Atualizado em 17/11/2026. A Florença substituiu a proposta de IA paga pelo pedido de uma versão sem gastos com IA. A implementação ativa usa regras determinísticas do próprio aplicativo. O plano anterior foi preservado em [histórico](../history/PRE-REGRAS-PLAN.md).
 
 ## Entrega local

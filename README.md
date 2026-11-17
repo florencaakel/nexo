@@ -1,5 +1,9 @@
 # Nexo — demonstração sem IA paga
 
+## Atualização local após o retorno da banca
+
+Voz por ditado opcional, indicação administrativa de encaminhamento, ficha automática e apresentação focada no atendimento humano de consumo. **Preparada, ainda não publicada.** Veja [mudanças, evidências e pendências](docs/mvp/RETORNO-BANCA.md). 119 testes passaram. O ditado pode processar áudio pelo fornecedor do navegador, mediante ciência do visitante; apenas o texto confirmado é salvo pelo Nexo.
+
 ## Vercel: demonstração por navegador
 
 **Publicado:** https://aps-nexo.vercel.app — [registro e testes](docs/mvp/VERCEL.md).
@@ -12,7 +16,7 @@ npm run build:vercel
 npm run preview:vercel
 ```
 
-Prévia estática em `http://127.0.0.1:5180`. O build publicável fica em `dist/browser`, incluindo configuração Vercel. Para publicar, use `npm run package:vercel` e somente a pasta de arquivos selecionados informada pelo comando. Não contém banco local, credenciais, código servidor hospedado ou serviço de IA. A versão anterior Worker/D1 permanece disponível pelos comandos abaixo.
+Prévia estática em `http://127.0.0.1:5180`. O build publicável fica em `dist/browser`, incluindo configuração Vercel. Para publicar, use `npm run package:vercel` e somente a pasta de arquivos selecionados informada pelo comando. Não contém banco local, credenciais ou código servidor hospedado. O ditado usa o recurso nativo do navegador, sem API paga do Nexo. A versão anterior Worker/D1 permanece disponível pelos comandos abaixo.
 
 ## Versão Worker/D1 preservada
 

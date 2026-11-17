@@ -1,5 +1,7 @@
 # Nexo — plano vigente sem IA paga
 
+> Atualização local posterior ao retorno da banca: [voz, encaminhamento, apresentação e pendências](RETORNO-BANCA.md). Fonte `98abab0`, 119 testes. Ainda não publicada; o registro do deploy anterior abaixo permanece histórico.
+
 > Atualização final de 17/11/2026: a demo por navegador foi autorizada e publicada em https://aps-nexo.vercel.app, sem login, banco remoto ou IA paga. Dados só no navegador; 99 testes passaram. [VERCEL.md](VERCEL.md) é a referência atual de publicação, arquitetura, comandos e QA. O restante preserva o contexto da versão Worker/D1 anterior.
 
 

@@ -57,3 +57,7 @@ Pedido expresso: “publica na vercel como - aps-nexo.vercel.app”. Após expli
 Escopo autorizado: adaptar e publicar uma demonstração estática pública na conta Vercel existente, projeto `aps-nexo`, no plano Hobby sem recursos pagos. Sem login, banco remoto, sincronização, terceiros de IA ou envio de relatos. Os registros ficam somente no perfil de navegador do visitante. A criação do projeto nomeado é parte do pedido. Esta autorização específica não autoriza Git push, PR, merge, exclusões ou publicação no Sites. Não pedir novamente confirmação deste mesmo deploy.
 
 Publicação autorizada executada: READY em 17/11/2026, deployment `dpl_3V6mou3RT1CFzihkjcxu1ZGPD8FH`, https://aps-nexo.vercel.app. Fonte `b4fc760`. Nenhuma autorização de push/PR/merge ou publicação posterior foi inferida. A autorização específica deste deploy foi consumida.
+
+## Retorno da banca e voz — desenvolvimento autorizado
+
+Florença pediu adicionar a opção de áudio em vez de escrever, uma resposta sobre encaminhar ao jurídico e aplicar os comentários da banca. Isso autoriza as alterações locais de interface e função. A versão preparada usa ditado nativo com ciência obrigatória sobre processamento pelo fornecedor do navegador; indicação administrativa baseada em escolhas explícitas; nenhuma avaliação automática de mérito jurídico. Não houve aprovação específica de novo deploy, serviço pago ou uso real de microfone nesta rodada. A pergunta opcional sobre o ditado ainda aguarda resposta. O estado concreto está em RETORNO-BANCA.md.

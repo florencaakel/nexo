@@ -1,3 +1,5 @@
+ATUALIZAÇÃO LOCAL APÓS RETORNO DA BANCA (17/11/2026): leia primeiro docs/mvp/RETORNO-BANCA.md. Home focada em consumo repetitivo e contato humano; ditado opcional com consentimento e possível processamento pelo fornecedor do navegador; encaminhamento por escolhas explícitas, sem decisão sobre mérito jurídico; geração automática da ficha. Fonte98abab0,119 testes passaram. Candidato outputs/nexo-vercel-6oGVPJ. NÃO PUBLICADO; aguarda aprovação específica de Florença, inclusive preferência do ditado. Microfone real ainda precisa de teste. O histórico abaixo descreve estados anteriores.
+
 CONTINUAR NEXO — VERSÃO SEM IA PAGA
 
 Leia README.md e docs/mvp/{PLAN,TASKS,APPROVALS,API-CONTRACTS,QA,RUNBOOK}.md. Preserve o Site appgprj_6ac5417ab1088191936830568f12e4a8 e a apresentação branca, azul e laranja.

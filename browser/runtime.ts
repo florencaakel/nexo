@@ -28,6 +28,10 @@ export async function handleBrowserRequest(path:string,options:RequestInit={}):P
     if(parts[0]==='admin'&&parts[1]==='memberships') return failure('BROWSER_ACCESS_UNAVAILABLE','Esta demonstração é individual e local ao navegador. Não há contas remotas ou gerenciamento de acessos.',403);
     const headers=new Headers(options.headers);headers.set('Origin',origin);
     const request=new Request(url,{...options,headers});
+    // Browser Request guards discard the forbidden Origin header. This object
+    // never goes to fetch: give the in-process API its explicit local headers,
+    // while retaining the server's unchanged Origin/CSRF validation.
+    Object.defineProperty(request,'headers',{value:headers});
     const SQL=await sqlite();
     let factory:IDBFactory|undefined;let locks:LockManager|undefined;
     try {factory=globalThis.indexedDB;locks=globalThis.navigator?.locks;} catch {return failure('BROWSER_STORAGE_UNAVAILABLE','O navegador bloqueou o armazenamento local. Nenhuma operação foi confirmada.');}

@@ -123,7 +123,11 @@ test('sem IA paga: os 12 casos documentados usam o motor real com referências v
     if (name === 'C08') assert.doesNotMatch(JSON.stringify(analysis.data), /participante\.example|CPF FICTÍCIO|CONTA FICTÍCIA|ENDEREÇO FICTÍCIO/iu);
     // Plain commands may remain verbatim source excerpts. They cannot become
     // operations or executable markup; the API invariants below test effects.
-    if (name === 'C09') assert.doesNotMatch(JSON.stringify(analysis.data), /<script>|TESTE_NEXO/u);
+    if (name === 'C09') {
+      assert.doesNotMatch(JSON.stringify(analysis.data), /<script>|TESTE_NEXO/u);
+      const question = (await provider.question(sample)).data.question;
+      assert.doesNotMatch(question ?? '', /contar.*aconteceu/iu, 'Cobrança já descrita não deve pedir novamente a descrição da situação');
+    }
     if (name === 'C11') { assert.deepEqual(analysis.data.perguntas_pendentes, []); assert.equal((await provider.question(sample)).data.question, null); }
   });
   assert.equal(network.mock.callCount(), 0);

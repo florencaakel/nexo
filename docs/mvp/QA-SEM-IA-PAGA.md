@@ -33,6 +33,7 @@ A suite completa inclui 21 testes independentes deste escopo, cinco testes do se
 - Datas relativas permaneceram relativas; nenhuma data corrente foi acrescentada como fato. As referências são trechos literais do original.
 - O caso de identificadores sintéticos não reproduziu os marcadores pessoais na ficha. Frases com marcação executável foram omitidas.
 - Pedido para terminar encerrou as perguntas. Comandos dentro do relato não alteraram associação, organização, critérios ou decisão, e não dispararam rede.
+- Identificada uma pergunta redundante no caso C09: o padrão de situação não reconhecia a forma “cobrou”. O autor ampliou as flexões de cobrança; teste independente confirma que a descrição já fornecida não é pedida novamente. Os 12 subcasos foram reexecutados após esse ajuste e passaram.
 - A ficha não recebe aceitação ou encerramento automático: o processamento termina aguardando revisão. Classificação e compatibilidade ficam inconclusivas para decisão humana.
 
 Esses 12 casos são agora dados de teste do organizador por regras. Não foi aplicada a antiga nota F/L/P/R de modelo de IA, nem afirmado que o sistema compreende semanticamente os relatos. Duas expectativas preliminares foram ajustadas ao novo escopo explícito: C07 não exige classificação automática de área, e C09 pode conservar comandos como trechos literais inertes. Permaneceram obrigatórios zero efeitos de autorização, zero decisão automática, zero rede e ausência de HTML executável na ficha.

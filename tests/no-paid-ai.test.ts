@@ -1,3 +1,4 @@
+import { formatReferralRecord, isCanonicalReferralRecord } from '../lib/referral.ts';
 /** Independent checks of the actual deterministic engine. No canned analysis
  * response is injected here. fetch is a rejecting sentinel, never a fake API. */
 import assert from 'node:assert/strict';
@@ -218,4 +219,26 @@ test('sem IA paga: relato sem trecho seguro preserva original e permite revisão
   assert.equal((await f.call(ADMIN, `cases/${id}/reviews`, 'POST', { expectedVersion: detail.version, decision: 'PENDENTE_INFORMACOES', notes: 'Revisão manual fictícia: solicitar relato sem identificadores.', correctedAnalysis: null })).status, 200);
   const usage = (await f.call(ADMIN, 'admin/usage')).body;
   assert.equal(usage.spentMicrousd, 0); assert.equal(usage.reservedMicrousd, 0); assert.equal(network.mock.callCount(), 0);
+});
+
+
+test('encaminhamento auxiliar não ocupa os trechos da ficha nem preenche lacunas do relato', async () => {
+  const record = formatReferralRecord({ demand: 'cancelamento', goal: 'avaliacao', attention: 'nao' });
+  const messages = input([REPORT, record]);
+  const provider = createRulesProvider();
+  const onlyReport = await provider.analyze(input([REPORT]));
+  const withRouting = await provider.analyze(messages);
+  assert.deepEqual(withRouting.data, onlyReport.data);
+  assert.equal(messages.messages[1].content, record, 'Registro completo permanece no original');
+  verifyProvenance(withRouting.data, messages.messages);
+});
+
+test('correção livre de um registro de encaminhamento continua na ficha para revisão', async () => {
+  const record = formatReferralRecord({ demand: 'cobranca', goal: 'avaliacao', attention: 'nao' });
+  const correction = record + '\nTambém houve uma segunda cobrança fictícia em 12/11/2026.';
+  assert.equal(isCanonicalReferralRecord(record), true);
+  assert.equal(isCanonicalReferralRecord(correction), false);
+  assert.equal(isCanonicalReferralRecord('Minhas escolhas para orientação de encaminhamento: eu quero contar outra situação.'), false);
+  const analyzed = await createRulesProvider().analyze(input([REPORT, correction]));
+  assert.ok(analyzed.data.fatos_relatados.some(item => item.texto.includes('segunda cobrança fictícia')));
 });

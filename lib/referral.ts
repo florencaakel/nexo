@@ -79,3 +79,17 @@ export function formatReferralRecord(choices: ReferralChoices): string {
     'Nenhum encaminhamento foi enviado a uma equipe por este registro.',
   ].join('\n');
 }
+
+let canonicalRecords: Set<string> | undefined;
+/** Only exact generated records are auxiliary. Edited text remains part of the
+ * narrative so a participant's additions are never silently discarded. */
+export function isCanonicalReferralRecord(content: string): boolean {
+  if (!content.startsWith('Minhas escolhas para orientação de encaminhamento')) return false;
+  if (!canonicalRecords) {
+    canonicalRecords = new Set();
+    for (const demand of REFERRAL_OPTIONS.demand) for (const goal of REFERRAL_OPTIONS.goal) for (const attention of REFERRAL_OPTIONS.attention) {
+      canonicalRecords.add(formatReferralRecord({ demand: demand.value, goal: goal.value, attention: attention.value }));
+    }
+  }
+  return canonicalRecords.has(content);
+}

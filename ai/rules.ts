@@ -1,3 +1,4 @@
+import { isCanonicalReferralRecord } from '../lib/referral.ts';
 import { AiFailure, type AiInput, type AiProvider, type AiResult, type QuestionData } from '../lib/ai-contract.ts';
 import { MAX_PARTICIPANT_CHARS, MAX_QUESTIONS, type AnalysisData, type CitedText, type MessageDTO } from '../lib/contracts.ts';
 import { containsUnnecessaryIdentifier } from './privacy.ts';
@@ -55,7 +56,7 @@ function checkedInput(input: AiInput): MessageDTO[] {
 }
 
 function missingTopics(input: AiInput, users: MessageDTO[]) {
-  const text = users.map(message => message.content).join('\n');
+  const text = users.filter(message => !isCanonicalReferralRecord(message.content)).map(message => message.content).join('\n');
   return topics.filter(topic => !topic.found.test(text));
 }
 
@@ -101,7 +102,7 @@ function excerpts(users: MessageDTO[]): { items: CitedText[]; omitted: boolean; 
 }
 
 function analysisData(input: AiInput, users: MessageDTO[]): AnalysisData {
-  const { items, omitted, truncated } = excerpts(users);
+  const { items, omitted, truncated } = excerpts(users.filter(message => !isCanonicalReferralRecord(message.content)));
   if (!items.length) {
     throw new AiFailure('RULES_NO_SAFE_TEXT', 'Não há trecho adequado para a ficha. O original permanece salvo para revisão manual; use apenas situações fictícias, sem identificadores pessoais.');
   }

@@ -338,3 +338,5 @@ body {
 .nx-delete-button { background:#a33b2a; color:white; }
 .nx-delete-button:hover:not(:disabled) { background:#852b1d; }
 .nx-example-button { display:inline-block; margin-bottom:20px; }
+.nx-browser-notice { color:#69451f; background:#fff6eb; border:1px solid #f0d7b7; border-radius:7px; padding:14px 18px; font-size:.82rem; line-height:1.6; margin-bottom:30px; max-width:none; }
+.nx-browser-notice strong { font-weight:650; }

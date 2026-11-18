@@ -69,3 +69,11 @@ Após a entrega das prévias, dos 119 testes e da pergunta “Você aprova esta 
 Escopo: um novo deploy de produção do candidato `outputs/nexo-vercel-6oGVPJ`, fonte funcional `98abab0`, no projeto Vercel existente `aps-nexo`. Inclui apresentação revisada, ditado opcional nativo com ciência sobre processamento pelo navegador, indicação administrativa de encaminhamento e ficha automática. Sem API paga, banco contratado ou novos serviços. O teste com captação real de microfone permanece pendente e foi informado antes da aprovação. Esta aprovação não autoriza push, PR, merge, exclusões ou publicações posteriores.
 
 Publicação autorizada executada em 17/11/2026: READY, `dpl_Dfd19aiYnqkr7m8vEaGbaenfbJBd`, alias https://aps-nexo.vercel.app. Candidato aprovado publicado sem alteração de código. Conferência HTTP e jornada de relato/encaminhamento/ficha com recarga passaram no alias público. A autorização deste deploy foi consumida; novas publicações exigem nova confirmação.
+
+## Primeiro envio ao GitHub na nova conta — autorizado
+
+Florença pediu login no GitHub CLI em outra conta e, depois de concluir a autenticação, respondeu: **“pronto, pode enviar o projeto.”** A conta ativa foi confirmada como `florencaakel`.
+
+Escopo: criar o repositório privado `https://github.com/florencaakel/nexo` e enviar o histórico da branch `continue-nexo-project`, incluindo código, documentação e relatório de uso de IA. O repositório foi criado e configurado como `origin`. A checagem do histórico anterior ao envio não encontrou arquivos de ambiente versionados nem os padrões de credenciais examinados; arquivos `.env` não foram abertos. A checagem não equivale a uma auditoria exaustiva de segredos.
+
+Esta autorização cobre o primeiro envio deste projeto. Não autoriza tornar o repositório público, novos pushes posteriores, PR, merge, deploy, exclusões ou integração automática com a Vercel. O estado remoto será conferido após o push; este registro documenta a autorização e a preparação, não antecipa o resultado.

@@ -1,5 +1,7 @@
 # Nexo — demonstração sem IA paga
 
+Código e histórico: [florencaakel/nexo](https://github.com/florencaakel/nexo), repositório privado. Branch de continuidade: `continue-nexo-project`. O [relatório de uso de IA desta etapa](output/pdf/Nexo-Relatorio-Uso-IA-Etapa-Demo-2026-11-17.pdf) acompanha o projeto.
+
 ## Atualização publicada após o retorno da banca
 
 Voz por ditado opcional, indicação administrativa de encaminhamento, ficha automática e apresentação focada no atendimento humano de consumo. **Publicada em https://aps-nexo.vercel.app.** Veja [mudanças, evidências e pendências](docs/mvp/RETORNO-BANCA.md). 119 testes passaram. O ditado pode processar áudio pelo fornecedor do navegador, mediante ciência do visitante; apenas o texto confirmado é salvo pelo Nexo.

@@ -1,6 +1,8 @@
 # Nexo — demonstração sem IA paga
 
-Código e histórico: [florencaakel/nexo](https://github.com/florencaakel/nexo), repositório privado. Branch de continuidade: `continue-nexo-project`. O [relatório de uso de IA desta etapa](output/pdf/Nexo-Relatorio-Uso-IA-Etapa-Demo-2026-11-17.pdf) acompanha o projeto.
+Código e histórico: [florencaakel/nexo](https://github.com/florencaakel/nexo), repositório público. Branch de continuidade: `continue-nexo-project`. O [relatório de uso de IA desta etapa](output/pdf/Nexo-Relatorio-Uso-IA-Etapa-Demo-2026-11-17.pdf) acompanha o projeto.
+
+Identidade do projeto: **Florença Akel**, conta GitHub `florencaakel`. As referências pessoais foram normalizadas também nos registros históricos. Endereços antigos que expunham identificadores pessoais estão marcados como omitidos, e os caminhos das capturas são relativos ao projeto; isso não representa nova execução dos testes nem transferência da hospedagem.
 
 ## Atualização publicada após o retorno da banca
 

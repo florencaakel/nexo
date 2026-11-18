@@ -77,3 +77,11 @@ Florença pediu login no GitHub CLI em outra conta e, depois de concluir a auten
 Escopo: criar o repositório privado `https://github.com/florencaakel/nexo` e enviar o histórico da branch `continue-nexo-project`, incluindo código, documentação e relatório de uso de IA. O repositório foi criado e configurado como `origin`. A checagem do histórico anterior ao envio não encontrou arquivos de ambiente versionados nem os padrões de credenciais examinados; arquivos `.env` não foram abertos. A checagem não equivale a uma auditoria exaustiva de segredos.
 
 Esta autorização cobre o primeiro envio deste projeto. Não autoriza tornar o repositório público, novos pushes posteriores, PR, merge, deploy, exclusões ou integração automática com a Vercel. O estado remoto será conferido após o push; este registro documenta a autorização e a preparação, não antecipa o resultado.
+
+## Autoria, visibilidade e identidade do projeto
+
+Após o primeiro envio, foi solicitada a atribuição dos commits à conta `florencaakel`. A correção dos 53 commits foi aprovada com **“sim, pode”**, enviada com proteção contra alterações concorrentes e confirmada no GitHub. Autora e committer: Florença Akel, usando o endereço privado da conta. A identidade local deste repositório também foi corrigida.
+
+Na sequência, a instrução **“deixa o repo publico.”** autorizou a mudança de visibilidade. O repositório `florencaakel/nexo` foi confirmado como público.
+
+A nova instrução determina que todas as referências pessoais do projeto usem Florença. A preparação inclui os arquivos versionados e as versões anteriores da branch, preservando os resultados registrados. Identificadores pessoais de URLs históricas são omitidos, sem inventar endereços ou transferir contas de hospedagem. O envio deste novo histórico depende de uma confirmação específica; as autorizações anteriores já foram utilizadas.
